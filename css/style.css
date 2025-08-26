@@ -1,0 +1,126 @@
+/* --- COLORS --- */
+:root {
+    --color-fondo: #f5e6d3;
+    --color-principal: #a0522d;
+    --color-secundario: #87a96b;
+    --color-detalles: #d4a437;
+    --color-suave: #c47a6d;
+}
+
+/* --- GLOBAL STYLES --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    height: 100dvh;
+    font-family: sans-serif;
+    background-color: var(--color-fondo);
+    color: var(--color-principal);
+}
+
+/* --- HEADER SECTION --- */
+.header__container {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    justify-content:space-evenly;
+    position: fixed;
+    background-color: var(--color-fondo);
+    border-bottom: 1px solid var(--color-principal);
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+/* --- IZQUIERDA --- */
+.menu__container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.menu-toggle img {
+    width: 2.1rem;
+}
+
+.nav__bar {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo__container a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    text-decoration: none;
+}
+
+.nombre {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-principal);
+
+}
+
+.logo-item {
+    width: 5.9rem;
+}
+
+
+/* --- DERECHA --- */
+.nav__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+}
+
+.nav__links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.nav__items {
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 9px;
+    align-items: center;
+    list-style: none;
+}
+
+.nav__items a {
+    flex: 1;
+    text-decoration: none;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color-principal);
+}
+
+.funcionalidades__container {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 0;
+    padding: 0;
+    padding: 10px;
+}
+
+.account-widget {
+    display: flex;
+}
+
+.account-widget a img, .cart-widget a img {
+    width: 2.2rem;
+}
