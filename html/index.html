@@ -1,27 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muebleria Hermanos Jota</title>
-    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <header class="header">
-        <div class="header__logo-container">
-            <img src="../Kit de imágenes/logo.svg" class="header__logo">
+        <div class="header__container">
+            <div class="menu__container">
+                <div class="menu-toggle" aria-label="Abrir menu">
+                    <img src="../Kit de imágenes/menu-svgrepo-com.svg">
+                </div>
+            </div>
+            <nav class="nav__bar" aria-label="Navegacion Principal">
+                <div class="logo__container">
+                    <a href="index.html">
+                        <img src="../Kit de imágenes/logo.svg" alt="Logo de la Empresa - Pagina de Inicio" class="logo-item">
+                        <h1 class="nombre">Hermanos Jota</h1>
+                    </a>
+                </div>
+                <div class="nav__container">
+                    <ul class="nav__links">
+                        <li class="nav__items"><a href="productos.html">Productos</a></li>  
+                        <li class="nav__items"><a href="about_as.html">Sobre Nosotros</a></li>
+                        <li class="nav__items"><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="funcionalidades__container">
+                <div class="account-widget">
+                    <a href="#">
+                        <img src="../Kit de imágenes/user-svgrepo-com.svg" alt="">
+                    </a>
+                </div>
+                <div class="cart-widget">
+                    <a href="#">
+                        <img src="../Kit de imágenes/shopping-cart-svgrepo-com.svg" alt="">
+                    </a>
+                </div>
+            </div>
         </div>
-        <nav class="header__nav">
-            <ul class="header__nav-list">
-                <li class="header__nav-item"><a href="index.html">Inicio</a></li>
-                <li class="header__nav-item"><a href="productos.html">Productos</a></li>
-                <li class="header__nav-item"><a href="about_as.html">Sobre Nosotros</a></li>
-                <li class="header__nav-item"><a href="contacto.html">Contacto</a></li>
-            </ul>           
-        </nav>
     </header>
     <main>
 
     </main>
+    <script src="../script/script.js"></script>
 </body>
 </html>
