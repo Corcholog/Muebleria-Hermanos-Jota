@@ -1,3 +1,10 @@
+:root {
+    --color-fondo: #f5e6d3;
+    --color-principal: #a0522d;
+    --color-secundario: #87a96b;
+    --color-detalles: #d4a437;
+    --color-suave: #c47a6d;
+}
 * {
     box-sizing: border-box;
     scroll-behavior: smooth;
@@ -5,8 +12,8 @@
 
 body {
     font-family: sans-serif;
-    background-color: #f5e6d3;
-    color: #a0522d;
+    background-color: var(--color-fondo);
+    color: var(--color-principal);
 }
 
 body, div, ul, nav, header, footer, a, li, label {
@@ -16,7 +23,7 @@ body, div, ul, nav, header, footer, a, li, label {
 
 /* ---- HEADER SECTION ---- */
 .header {
-    background-color: #a0522d;
+    background-color: var(--color-fondo);
     display: flex;
     height: 15dvh;
     justify-content: space-between;
@@ -29,8 +36,8 @@ body, div, ul, nav, header, footer, a, li, label {
 
 .header__nav {
     display: flex;
-    background-color: #a0522d;
-    color: #f5e6d3;
+    background-color: hidden;
+    color:;
     position: static;
     height: auto;
     width: auto;
