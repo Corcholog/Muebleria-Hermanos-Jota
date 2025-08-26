@@ -101,7 +101,9 @@ body {
 }
 
 .nav__items a {
-    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
     font-size: 1.3rem;
     font-weight: 700;
@@ -117,8 +119,10 @@ body {
     padding: 10px;
 }
 
-.account-widget {
+.account-widget a, .cart-widget a {
     display: flex;
+    align-items: center;
+    justify-content: center;    
 }
 
 .account-widget a img, .cart-widget a img {
