@@ -1,0 +1,253 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: sans-serif;
+}
+
+header h1{
+    text-align: center;
+    color: #A0522D;
+    margin: 30px;
+    padding: 10px;
+}
+
+#card-container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 30px;
+}
+
+.card{
+    border-radius: 12px;    
+    text-align: center;
+    background-color: #A0522D;
+}
+
+.card img {
+  max-width: 90%;
+  height: auto;
+  border-radius: 8px;
+  background-color: #87A96B;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
+}
+
+
+.card h2{
+    margin-top: 10px;
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding: 15px;
+}
+
+.card:hover {
+  background-color: #B36A5C; /* un tono más oscuro al hover */
+  transform: scale(1.03);    /* leve agrandamiento al pasar el puntero */
+}
+
+.precio {
+  color: #fff;
+  font-size: 1.7rem;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.btn-detalle {
+  display: inline-block;
+  background-color: #fff;
+  color: #A0522D;
+  padding: 10px 20px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.btn-detalle:hover {
+  background-color: #f1f1f1;
+}
+
+.section-title{
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: #A0522D;
+    margin-bottom: 25px;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    width: 30%;
+    height: 3px;
+    background-color:#D4A437;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.section-title {
+  display: block;
+  text-align: center;
+}
+
+/* PRODUCTO DETALLE */
+#btn-back{
+    display: inline-block;
+    margin-left: 20px;
+    color: #C47A6D;
+    text-decoration: none;
+}
+
+#btn-back:hover{
+    color: #D4A437;
+}
+
+#product-details {
+  background-color: #A0522D;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-radius: 12px;
+  margin: 20px;
+}
+
+#product-img {
+  display: flex;
+  justify-content: center;
+}
+
+#product-img img {
+  max-width: 100%;
+  border-radius: 12px;
+  background-color: #87A96B;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
+}
+
+#product-info h2 {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 15px;
+  font-size: 1.4rem;
+}
+
+.detail {
+  background-color: #F5E6D3;
+  border-radius: 8px;
+  padding: 12px;
+  margin: 8px 0;
+  font-size: 0.95rem;
+  color: #333;
+  box-shadow: 0px 2px 4px rgba(0,0,0,0.1);
+}
+
+.detail span {
+  color: #A0522D;
+  font-weight: bold;
+}
+
+.btn-cart {
+  width: 100%;
+  padding: 14px;
+  margin-top: 10px;
+  background-color: #D4A437;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+  transition: background 0.3s, transform 0.2s;
+}
+
+.btn-cart:hover {
+  background-color: #C47A6D;
+  transform: scale(1.02);
+}
+
+
+
+ /* Pantallas medianas (el breakpoint es 768px) */
+@media (min-width: 768px) {
+    #card-container {
+      flex-direction: row; /* Cuando la pantalla mida 768px o más, las cajas se ponen en fila */
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .card {
+        width: 45%;
+    }
+
+    .card img{
+        width: 80%;
+    }
+
+    .btn-detalle {
+        display: none;
+    }
+
+    #product-details{
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    #product-img, #product-info{
+        flex:1;
+    }
+}
+
+/* Pantallas grandes (laptops/desktop, >= 1024px) */
+@media (min-width: 1024px) {
+
+    #card-container{
+        justify-content: space-evenly;
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    .card{
+        width: 30%;
+    }
+
+    .card img{
+        width: 70%;
+    }
+
+    section{
+        padding-bottom: 30px;
+    }
+
+    #product-details{
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 40px;
+    }
+
+    #product-img img{
+        max-width: 90%;
+    }
+
+    #product-info{
+        padding-left: 40px;
+    }
+
+    .detail{
+        font-size: 1.10rem;
+        padding: 20px;
+    }
+
+    .btn-cart{
+        font-size: 1.1rem;
+        padding: 14px 20px;
+    }
+}
