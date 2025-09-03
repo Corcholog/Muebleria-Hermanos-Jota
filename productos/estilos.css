@@ -5,7 +5,6 @@
 }
 
 body{
-    background-color: #F5E6D3;
     font-family: sans-serif;
 }
 
@@ -73,6 +72,107 @@ header h1{
   background-color: #f1f1f1;
 }
 
+.section-title{
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: #A0522D;
+    margin-bottom: 25px;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    width: 30%;
+    height: 3px;
+    background-color:#D4A437;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.section-title {
+  display: block;
+  text-align: center;
+}
+
+/* PRODUCTO DETALLE */
+#btn-back{
+    display: inline-block;
+    margin-left: 20px;
+    color: #C47A6D;
+    text-decoration: none;
+}
+
+#btn-back:hover{
+    color: #D4A437;
+}
+
+#product-details {
+  background-color: #A0522D;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-radius: 12px;
+  margin: 20px;
+}
+
+#product-img {
+  display: flex;
+  justify-content: center;
+}
+
+#product-img img {
+  max-width: 100%;
+  border-radius: 12px;
+  background-color: #87A96B;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
+}
+
+#product-info h2 {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 15px;
+  font-size: 1.4rem;
+}
+
+.detail {
+  background-color: #F5E6D3;
+  border-radius: 8px;
+  padding: 12px;
+  margin: 8px 0;
+  font-size: 0.95rem;
+  color: #333;
+  box-shadow: 0px 2px 4px rgba(0,0,0,0.1);
+}
+
+.detail span {
+  color: #A0522D;
+  font-weight: bold;
+}
+
+.btn-cart {
+  width: 100%;
+  padding: 14px;
+  margin-top: 10px;
+  background-color: #D4A437;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+  transition: background 0.3s, transform 0.2s;
+}
+
+.btn-cart:hover {
+  background-color: #C47A6D;
+  transform: scale(1.02);
+}
+
 
 
  /* Pantallas medianas (el breakpoint es 768px) */
@@ -95,6 +195,15 @@ header h1{
     .btn-detalle {
         display: none;
     }
+
+    #product-details{
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    #product-img, #product-info{
+        flex:1;
+    }
 }
 
 /* Pantallas grandes (laptops/desktop, >= 1024px) */
@@ -116,5 +225,29 @@ header h1{
 
     section{
         padding-bottom: 30px;
+    }
+
+    #product-details{
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 40px;
+    }
+
+    #product-img img{
+        max-width: 90%;
+    }
+
+    #product-info{
+        padding-left: 40px;
+    }
+
+    .detail{
+        font-size: 1.10rem;
+        padding: 20px;
+    }
+
+    .btn-cart{
+        font-size: 1.1rem;
+        padding: 14px 20px;
     }
 }
