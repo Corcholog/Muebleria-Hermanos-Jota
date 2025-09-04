@@ -51,10 +51,12 @@ header h1{
 
 .precio {
   color: #fff;
-  font-size: 1.7rem;
+  font-size: 2rem;
   font-family: Georgia, 'Times New Roman', Times, serif;
   margin: 10px 0;
   font-weight: bold;
+  background-color: rgba(0,0,0,0.2); 
+  padding: 5px 10px;
 }
 
 .btn-detalle {
@@ -188,10 +190,6 @@ header h1{
         width: 45%;
     }
 
-    .card img{
-        width: 80%;
-    }
-
     .btn-detalle {
         display: none;
     }
@@ -217,10 +215,6 @@ header h1{
 
     .card{
         width: 30%;
-    }
-
-    .card img{
-        width: 70%;
     }
 
     section{
