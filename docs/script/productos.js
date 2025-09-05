@@ -32,6 +32,6 @@ const productos = [
         nombre: "Mesa de Centro Araucaria",
         precio: 115000,
         descripcion: "Mesa de centro con sobre circular de mármol Patagonia y base de tres patas en madera de nogal.",
-        imagen: "imagenes/Mesa_de_Centro Araucaria.png",
+        imagen: "imagenes/Mesa_de_Centro_Araucaria.png",
     }
 ];
