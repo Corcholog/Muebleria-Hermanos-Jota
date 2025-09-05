@@ -1,15 +1,15 @@
 const productos = [
-    {id:1, nombre: "Aparador Uspallata", img: "kit-img/Aparador Uspallata.png", precio: "$120.000"},
-    {id:2, nombre: "Biblioteca Recoleta", img: "kit-img/Biblioteca Recoleta.png", precio: "$120.000"},
-    {id:3, nombre: "Butaca Mendoza", img: "kit-img/Butaca Mendoza.png", precio: "$120.000"},
-    {id:4, nombre: "Escritorio Costa", img: "kit-img/Escritorio Costa.png", precio: "$120.000"},
-    {id:5, nombre: "Mesa Comedor Pampa", img: "kit-img/Mesa Comedor Pampa.png", precio: "$120.000"},
-    {id:6, nombre: "Mesa de Centro Araucaria", img: "kit-img/Mesa de Centro Araucaria.png", precio: "$120.000"},
-    {id:7, nombre: "Mesa de Noche Aconcagua", img: "kit-img/Mesa de Noche Aconcagua.png", precio: "$120.000"},
-    {id:8, nombre: "Silla de Trabajo Belgrano", img: "kit-img/Silla de Trabajo Belgrano.png", precio: "$120.000"},
-    {id:9, nombre: "Sillas Córdoba", img: "kit-img/Sillas Córdoba.png", precio: "$120.000"},
-    {id:10, nombre: "Sillón Copacabana", img: "kit-img/Sillón Copacabana.png", precio: "$120.000"},
-    {id:11, nombre: "Sofá Patagonia", img: "kit-img/Sofá Patagonia.png", precio: "$120.000"},
+    {id:1, nombre: "Aparador Uspallata", img: "..imagenes/Aparador Uspallata.png", precio: "$120.000"},
+    {id:2, nombre: "Biblioteca Recoleta", img: "..imagenes/Biblioteca Recoleta.png", precio: "$120.000"},
+    {id:3, nombre: "Butaca Mendoza", img: "..imagenes/Butaca Mendoza.png", precio: "$120.000"},
+    {id:4, nombre: "Escritorio Costa", img: "..imagenes/Escritorio Costa.png", precio: "$120.000"},
+    {id:5, nombre: "Mesa Comedor Pampa", img: "..imagenes/Mesa Comedor Pampa.png", precio: "$120.000"},
+    {id:6, nombre: "Mesa de Centro Araucaria", img: "..imagenes/Mesa de Centro Araucaria.png", precio: "$120.000"},
+    {id:7, nombre: "Mesa de Noche Aconcagua", img: "..imagenes/Mesa de Noche Aconcagua.png", precio: "$120.000"},
+    {id:8, nombre: "Silla de Trabajo Belgrano", img: "..imagenes/Silla de Trabajo Belgrano.png", precio: "$120.000"},
+    {id:9, nombre: "Sillas Córdoba", img: "..imagenes/Sillas Córdoba.png", precio: "$120.000"},
+    {id:10, nombre: "Sillón Copacabana", img: "..imagenes/Sillón Copacabana.png", precio: "$120.000"},
+    {id:11, nombre: "Sofá Patagonia", img: "..imagenes/Sofá Patagonia.png", precio: "$120.000"},
 ];
 
 
