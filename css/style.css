@@ -234,7 +234,7 @@ body {
     width: 100%;
     
     /* gradiente para oscurecer la imagen de fondo */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), url('../Kit de imágenes/hero-banner.jpg'); 
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), url('../imagenes/hero-banner.jpg'); 
     background-size: cover;
     background-position: center;
     
@@ -406,6 +406,18 @@ body {
 .card__cta:hover {
     background-color: var(--color-fondo);
     color: var(--color-principal);
+}
+
+
+/* ============================================ */
+/* CONTACTO HTML              */
+/* ============================================ */
+
+.container{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 2rem;
 }
 
 /* ============================================ */
