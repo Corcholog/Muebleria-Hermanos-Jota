@@ -1,43 +1,60 @@
-const productos = [
-    {id:1, nombre: "Aparador Uspallata", img: "imagenes/Aparador_Uspallata.png", precio: "$120.000"},
-    {id:2, nombre: "Biblioteca Recoleta", img: "imagenes/Biblioteca_Recoleta.png", precio: "$120.000"},
-    {id:3, nombre: "Butaca Mendoza", img: "imagenes/Butaca_Mendoza.png", precio: "$120.000"},
-    {id:4, nombre: "Escritorio Costa", img: "imagenes/Escritorio_Costa.png", precio: "$120.000"},
-    {id:5, nombre: "Mesa Comedor Pampa", img: "imagenes/Mesa_Comedor_Pampa.png", precio: "$120.000"},
-    {id:6, nombre: "Mesa de Centro Araucaria", img: "imagenes/Mesa_de_Centro_Araucaria.png", precio: "$120.000"},
-    {id:7, nombre: "Mesa de Noche Aconcagua", img: "imagenes/Mesa_de_Noche_Aconcagua.png", precio: "$120.000"},
-    {id:8, nombre: "Silla de Trabajo Belgrano", img: "imagenes/Silla_de_Trabajo_Belgrano.png", precio: "$120.000"},
-    {id:9, nombre: "Sillas Córdoba", img: "imagenes/Sillas_Córdoba.png", precio: "$120.000"},
-    {id:10, nombre: "Sillón Copacabana", img: "imagenes/Sillón_Copacabana.png", precio: "$120.000"},
-    {id:11, nombre: "Sofá Patagonia", img: "imagenes/Sofá_Patagonia.png", precio: "$120.000"},
-];
+// Variable global para almacenar todos los productos
+let productosGlobales = [];
 
+function limpiarContenedor() {
+    const contenedor = document.getElementById("card-container");
+    if (!contenedor) return;
+    while (contenedor.firstChild) {
+        contenedor.removeChild(contenedor.firstChild);
+    }
+}
 
-// Selecciono el contenedor con querySelector
-const contenedor = document.querySelector("#card-container");
+function cargarCatalogo(productos) {
+    const contenedor = document.getElementById("card-container");
+    if (!contenedor) return;
 
-productos.forEach(producto => {
-    // Creo un article para la tarjetta
-    const tarjerta = document.createElement("article");
-    tarjerta.classList.add("card");
+    limpiarContenedor();
 
-    const h2 = document.createElement("h2");
-    h2.textContent = producto.nombre;
+    productos.forEach(producto => {
+        // Creo un article para la tarjetta
+        const tarjerta = document.createElement("article");
+        tarjerta.classList.add("card");
 
-    const img = document.createElement("img");
-    img.src = producto.img;
-    img.alt = producto.nombre;
+        const h2 = document.createElement("h2");
+        h2.textContent = producto.nombre;
 
-    const p = document.createElement("p");
-    p.textContent = producto.precio
-    p.classList.add("precio");
+        const img = document.createElement("img");
+        img.src = producto.imagen; 
+        img.alt = producto.nombre;
 
-    const a = document.createElement("a");
-    a.href = `producto.html#{producto.id}`;
-    a.classList.add("btn-detalle");
-    a.textContent = "Saber más";
+        const link = document.createElement("a");
+        link.href = `productos/producto-detalle.html?id=${producto.id}`;
 
-    tarjerta.append(h2, img, p, a);
-    
-    contenedor.appendChild(tarjerta);
-});
+        const precio = document.createElement("p");
+        precio.textContent = `$${producto.precio}`;
+        precio.classList.add("precio");
+
+        link.append(h2, img, precio);
+        tarjerta.appendChild(link);
+
+        const btn = document.createElement("button");
+        btn.textContent = "Añadir al carrito";
+        btn.classList.add("btn-detalle");
+        //btn.addEventListener("click", () => agregarAlCarrito(p));
+        tarjerta.appendChild(btn);
+
+        contenedor.appendChild(tarjerta);
+    });
+}
+
+// -------------------------
+// Fetch de productos desde JSON
+// -------------------------
+fetch("../data/productos.json")
+    .then(res => res.json())
+    .then(productos => {
+        productosGlobales = productos;
+        cargarCatalogo(productosGlobales);
+        //actualizarCarrito();
+    })
+    .catch(error => console.error("Error al cargar productos:", error));

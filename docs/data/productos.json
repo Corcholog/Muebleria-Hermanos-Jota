@@ -2,64 +2,66 @@
     {
         "id":1,
         "nombre": "Aparador Uspallata", 
-        "img": "imagenes/Aparador_Uspallata.png", 
-        "precio": "$120.000"
+        "imagen": "../imagenes/Aparador_Uspallata.png", 
+        "precio": 112.399
     },
     {
         "id":2, "nombre": "Biblioteca Recoleta", 
-        "img": "imagenes/Biblioteca_Recoleta.png", 
-        "precio": "$120.000"
+        "imagen": "../imagenes/Biblioteca_Recoleta.png", 
+        "precio": 134.759
     },
     {
         "id":3, 
         "nombre": "Butaca Mendoza", 
-        "imagen": "imagenes/Butaca_Mendoza.png", "precio": "$120.000"},
+        "imagen": "../imagenes/Butaca_Mendoza.png", 
+        "precio": 98.999
+    },
     {
         "id":4, 
         "nombre": "Escritorio Costa", 
-        "imagen": "imagenes/Escritorio_Costa.png", 
-        "precio": "$120.000"
+        "imagen": "../imagenes/Escritorio_Costa.png", 
+        "precio": 105.249
     },
     {
         "id":5, 
         "nombre": "Mesa Comedor Pampa", 
-        "imagen": "imagenes/Mesa_Comedor_Pampa.png", 
-        "precio": "$120.000"
+        "imagen": "../imagenes/Mesa_Comedor_Pampa.png", 
+        "precio": 121.909
     },
     {
         "id":6, 
         "nombre": "Mesa de Centro Araucaria", 
-        "imagen": "imagenes/Mesa_de_Centro_Araucaria.png", 
-        "precio": "$120.000"
+        "imagen": "../imagenes/Mesa_de_Centro_Araucaria.png", 
+        "precio": 117.459
     },
     {
         "id":7, 
         "nombre": "Mesa de Noche Aconcagua", 
-        "imagen": "imagenes/Mesa_de_Noche_Aconcagua.png", 
-        "precio": "$120.000"
+        "imagen": "../imagenes/Mesa_de_Noche_Aconcagua.png", 
+        "precio": 99.819
     },
     {
         "id":8, 
         "nombre": "Silla de Trabajo Belgrano", 
-        "imagen": "imagenes/Silla_de_Trabajo_Belgrano.png", 
-        "precio": "$120.000"
+        "imagen": "../imagenes/Silla_de_Trabajo_Belgrano.png", 
+        "precio": 128.309
     },
     {
         "id":9, 
         "nombre": "Sillas Córdoba", 
-        "imagen": "imagenes/Sillas_Córdoba.png", 
-        "precio": "$120.000"
+        "imagen": "../imagenes/Sillas_Córdoba.png", 
+        "precio": 103.699
     },
     {
         "id":10, 
         "nombre": "Sillón Copacabana", 
-        "imagen": "imagenes/Sillón_Copacabana.png", 
-        "precio": "$120.000"
+        "imagen": "../imagenes/Sillón_Copacabana.png", 
+        "precio": 115.729
     },
     {
         "id":11, 
         "nombre": "Sofá Patagonia", 
-        "imagen": "imagenes/Sofá_Patagonia.png", 
-        "precio": "$120.000"
+        "imagen": "../imagenes/Sofá_Patagonia.png", 
+        "precio": 123.499
     }
 ]
