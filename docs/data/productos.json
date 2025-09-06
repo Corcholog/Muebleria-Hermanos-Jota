@@ -1,0 +1,65 @@
+[
+    {
+        "id":1,
+        "nombre": "Aparador Uspallata", 
+        "img": "imagenes/Aparador_Uspallata.png", 
+        "precio": "$120.000"
+    },
+    {
+        "id":2, "nombre": "Biblioteca Recoleta", 
+        "img": "imagenes/Biblioteca_Recoleta.png", 
+        "precio": "$120.000"
+    },
+    {
+        "id":3, 
+        "nombre": "Butaca Mendoza", 
+        "imagen": "imagenes/Butaca_Mendoza.png", "precio": "$120.000"},
+    {
+        "id":4, 
+        "nombre": "Escritorio Costa", 
+        "imagen": "imagenes/Escritorio_Costa.png", 
+        "precio": "$120.000"
+    },
+    {
+        "id":5, 
+        "nombre": "Mesa Comedor Pampa", 
+        "imagen": "imagenes/Mesa_Comedor_Pampa.png", 
+        "precio": "$120.000"
+    },
+    {
+        "id":6, 
+        "nombre": "Mesa de Centro Araucaria", 
+        "imagen": "imagenes/Mesa_de_Centro_Araucaria.png", 
+        "precio": "$120.000"
+    },
+    {
+        "id":7, 
+        "nombre": "Mesa de Noche Aconcagua", 
+        "imagen": "imagenes/Mesa_de_Noche_Aconcagua.png", 
+        "precio": "$120.000"
+    },
+    {
+        "id":8, 
+        "nombre": "Silla de Trabajo Belgrano", 
+        "imagen": "imagenes/Silla_de_Trabajo_Belgrano.png", 
+        "precio": "$120.000"
+    },
+    {
+        "id":9, 
+        "nombre": "Sillas Córdoba", 
+        "imagen": "imagenes/Sillas_Córdoba.png", 
+        "precio": "$120.000"
+    },
+    {
+        "id":10, 
+        "nombre": "Sillón Copacabana", 
+        "imagen": "imagenes/Sillón_Copacabana.png", 
+        "precio": "$120.000"
+    },
+    {
+        "id":11, 
+        "nombre": "Sofá Patagonia", 
+        "imagen": "imagenes/Sofá_Patagonia.png", 
+        "precio": "$120.000"
+    }
+]
