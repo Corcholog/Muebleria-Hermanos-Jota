@@ -46,29 +46,64 @@
     </header>
   
     <main>
-        <div class="conteiner">
+        <div class="form__container">
             <div class="form">
-                <div class="contact-info">
-
+                <div class="contact__info">
+                    <h3 id="contact-info">Estamos para ayudarte</h3>
+                    <p class="text-form">Queremos que tus muebles reflejen tu estilo. 
+                        Si tenés dudas, consultas sobre nuestros productos o necesitás asesoramiento, escribinos. 
+                        Nuestro equipo está listo para acompañarte.</p>
+                    <div class="info">
+                        <div class="informacion">
+                            <p>
+                                <i class="fa-solid fa-location-dot"></i> 
+                                 Av. San Juan 2847<br>
+                                C1232AAB — Barrio de San Cristóbal<br>
+                                Ciudad Autónoma de Buenos Aires<br>
+                                Argentina
+                            </p>
+                        </div>
+                        <div class="informacion">
+                            <p>
+                                <p><i class="fa-solid fa-envelope"></i> info@hermanosjota.com.ar</p>
+                            </p>
+                        </div>
+                        <div class="informacion">
+                            <p><i class="fa-solid fa-phone"></i> +54 11 4567-8900</p>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="contact-form">
+                <div class="contact__form">
 
-                    
+                    <form id="contacto-form">
+                        <h3 id="contact-us">Escribinos</h3>
+                        <div class="input__container">
+                            <label for="nombre">Nombre</label>
+                            <input id="nombre" type="text" name="nombre" placeholder="Ingrese su nombre..." class="input">
+                        </div>
+                        <div class="input__container">
+                            <label for="email">Email</label>
+                            <input id="email" type="email" name="email" placeholder="Ingrese su email..." class="input">
+                        </div>
+                        <div class="input__container">
+                            <label for="mensaje">Mensaje</label>
+                            <textarea id="mensaje" name="mensaje" placeholder="Escribi tu mensaje..." class="input"></textarea>
+                        </div>
+                        <input type="submit" value="Enviar" id="boton">
+                        <p id="estado"></p>
+                    </form>
                 </div>
-
             </div>
-
         </div>
     </main>
-
 
     <footer class="footer">
         <div class="footer__container">
             <div class="row">
 
                 <div class="footer__column">
-                    <h4>Showroom y taller</h4>
+                    <h4 class="cat__footer">Showroom y taller</h4>
                     <p><strong>Hermanos Jota - Casa Taller</strong><br>
                     Av. San Juan 2847 <br>
                     C1232AAB — Barrio de San Cristóbal<br>
@@ -80,7 +115,7 @@
                 </div>
 
                 <div class="footer__column">
-                    <h4>Contacto</h4>
+                    <h4 class="cat__footer">Contacto</h4>
                     <ul>
                         <li><strong>Sitio web </strong> 
                             <a href="https://www.hermanosjota.com.ar" target="_blank">www.hermanosjota.com.ar</a>
@@ -95,8 +130,8 @@
                 </div>
 
                 <div class="footer__column">
-                    <h4>Seguinos</h4>
-                        <div class="social-links">
+                    <h4 class="cat__footer">Seguinos</h4>
+                        <div class="social__links">
                             <a href="https://alt-5a31a0302d72d.blackboard.com/bbcswebdav/pid-982156-dt-content-rid-14612411_1/courses/FSD.00-43441/Instagram%20copy/index.html?one_hash=0E71051EFD76C4C85225E6C4BEFAFB96&f_hash=8276A10384141EF6731550D16157DCA7" target="_blank"><i class="fab fa-instagram"></i></a>
                             <a href="https://wa.me/541145678900" target="_blank"><i class="fab fa-whatsapp"></i></a>
                         </div>
@@ -109,6 +144,8 @@
 
         </div>
     </footer>
+
+    <script src="script/contacto.js"></script>
 
 </body>
 </html>
