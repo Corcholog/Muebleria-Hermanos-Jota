@@ -300,12 +300,13 @@ body {
 
 /* --- SECCIÓN PRODUCTOS DESTACADOS --- */
 /*agregue*/
+/*
 #card-container{
     display: flex;
     flex-direction: column;
     gap: 20px;
     margin: 30px;
-}
+}*/
 
 .card{
     border-radius: 12px;    
@@ -315,7 +316,7 @@ body {
 
 .card img {
   max-width: 90%;
-  height: auto;
+  height: 200px;
   border-radius: 8px;
   background-color: #87A96B;
   box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
@@ -400,11 +401,18 @@ body {
     transform: translateX(-50%);
 }
 
+
 .destacados__grid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: center; /* centra el contenido */
     gap: 30px;
+}
+
+
+.destacados__grid .card {
+    flex: 1 1 250px;   /* mínimo 250px, se acomodan en filas */
+    max-width: 300px;
 }
 
 /* Estilos para los mensajes de carga y error */
@@ -416,6 +424,7 @@ body {
 }
 
 /* --- TARJETA DE PRODUCTO (PRODUCT CARD) --- */
+/*
 .producto-card {
     width: 300px;
     border: 1px solid #ddd;
@@ -430,12 +439,6 @@ body {
 .producto-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-}
-
-.card__imagen {
-    width: 100%;
-    height: 250px;
-    object-fit: cover; /* Asegura q la imagen cubra el espacio sin deformarse */
 }
 
 .card__content {
@@ -477,7 +480,7 @@ body {
     color: var(--color-principal);
 }
 
-
+*/
 /* ============================================ */
 /* CONTACTO HTML              */
 /* ============================================ */

@@ -9,42 +9,77 @@ function limpiarContenedor() {
     }
 }
 
-function cargarCatalogo(productos) {
+const obtenerProductos = () => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(true); // o resolve(productos) si quisieras devolver algo
+        }, 1500);
+    });
+};
+
+
+async function cargarCatalogo(productos) {
+
+
     const contenedor = document.getElementById("card-container");
     if (!contenedor) return;
 
-    limpiarContenedor();
 
-    productos.forEach(producto => {
-        // Creo un article para la tarjetta
-        const tarjerta = document.createElement("article");
-        tarjerta.classList.add("card");
+    const gridDestacados = document.getElementById('card-container');
+        try {
+            // Vaciamos el contenedor y mostramos el mensaje de carga
+            
+            const loadingMessage = document.createElement('p');
+            loadingMessage.className = 'loading-message';
+            loadingMessage.textContent = 'Cargando nuestros mejores diseños...';
+            gridDestacados.appendChild(loadingMessage);
 
-        const h2 = document.createElement("h2");
-        h2.textContent = producto.nombre;
+            const productosObtenidos = await obtenerProductos();
+            limpiarContenedor();
+            productos.forEach(producto => {
+                // Creo un article para la tarjetta
+                const tarjerta = document.createElement("article");
+                tarjerta.classList.add("card");
 
-        const img = document.createElement("img");
-        img.src = producto.imagen; 
-        img.alt = producto.nombre;
+                const h2 = document.createElement("h2");
+                h2.textContent = producto.nombre;
 
-        const link = document.createElement("a");
-        link.href = `productos/producto-detalle.html?id=${producto.id}`;
+                const img = document.createElement("img");
+                img.src = producto.imagen; 
+                img.alt = producto.nombre;
 
-        const precio = document.createElement("p");
-        precio.textContent = `$${producto.precio}`;
-        precio.classList.add("precio");
+                const link = document.createElement("a");
+                link.href = `productos/producto-detalle.html?id=${producto.id}`;
 
-        link.append(h2, img, precio);
-        tarjerta.appendChild(link);
+                const precio = document.createElement("p");
+                precio.textContent = `$${producto.precio}`;
+                precio.classList.add("precio");
 
-        const btn = document.createElement("button");
-        btn.textContent = "Añadir al carrito";
-        btn.classList.add("btn-detalle");
-        //btn.addEventListener("click", () => agregarAlCarrito(p));
-        tarjerta.appendChild(btn);
+                link.append(h2, img, precio);
+                tarjerta.appendChild(link);
 
-        contenedor.appendChild(tarjerta);
-    });
+                const btn = document.createElement("button");
+                btn.textContent = "Añadir al carrito";
+                btn.classList.add("btn-detalle");
+                //btn.addEventListener("click", () => agregarAlCarrito(p));
+                tarjerta.appendChild(btn);
+
+                contenedor.appendChild(tarjerta);
+            });
+
+        } catch (error) {
+            console.error('Error al cargar los productos:', error);
+            // Vaciamos el contenedor y mostramos el mensaje de error
+            while (gridDestacados.firstChild) {
+                gridDestacados.removeChild(gridDestacados.firstChild);
+            }
+            const errorMessage = document.createElement('p');
+            errorMessage.className = 'error-message';
+            errorMessage.textContent = 'No se pudieron cargar los productos. Intente más tarde.';
+            gridDestacados.appendChild(errorMessage);
+        }
+
+
 }
 
 // -------------------------
@@ -54,6 +89,7 @@ fetch("../data/productos.json")
     .then(res => res.json())
     .then(productos => {
         productosGlobales = productos;
+
         cargarCatalogo(productosGlobales);
         //actualizarCarrito();
     })
