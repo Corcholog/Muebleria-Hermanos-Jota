@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 1. OBTENER EL VALOR INICIAL DEL CARRITO
     // Lee el valor guardado en localStorage. Si no existe, empieza en 0.
-    // parseInt() convierte el texto guardado en un número.
     let cartCount = parseInt(localStorage.getItem('cartItemCount')) || 0;
 
     // 2. OBTENER EL ELEMENTO DEL DOM

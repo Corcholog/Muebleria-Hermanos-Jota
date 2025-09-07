@@ -1,5 +1,3 @@
-// productos.js
-
 // Variable global para almacenar todos los productos
 let productosGlobales = [];
 
