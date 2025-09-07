@@ -13,17 +13,93 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
         <link rel="stylesheet" href="productos/estilos.css">
-
         <title>Catálogo de productos</title>
     </head>
     <body>    
-        <header>
-        </header>
+    <header class="header">
+        <div class="header__container">
+            <div class="menu__container">
+                <div class="menu-toggle" aria-label="Abrir menu">
+                    <img src="../imagenes/menu-svgrepo-com.svg">
+                </div>
+            </div>
+            <nav class="nav__bar" aria-label="Navegacion Principal">
+                <div class="logo__container">
+                    <a href="../index.html">
+                        <img src="../imagenes/logo.svg" alt="Logo de la Empresa - Pagina de Inicio" class="logo-item">
+                        <h1 class="nombre">Hermanos Jota</h1>
+                    </a>
+                </div>
+                <div class="nav__container">
+                    <ul class="nav__links">
+                        <li class="nav__items"><a href="productos/productos.html">Productos</a></li>  
+                        <li class="nav__items"><a href="../about_as.html">Sobre Nosotros</a></li>
+                        <li class="nav__items"><a href="../contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="funcionalidades__container">
+                <div class="account-widget">
+                    <a href="#">
+                        <img src="imagenes/user-svgrepo-com.svg" alt="">
+                    </a>
+                </div>
+                <div class="cart-widget">
+                    <a href="#">
+                        <img src="imagenes/shopping-cart-svgrepo-com.svg" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
         <main>
             <h1 class="section-title">Catálogo de nuestros productos</h1>
             <section id="card-container">
             </section>
         </main>
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="row">
+
+                <div class="footer__column">
+                    <h4>Showroom y taller</h4>
+                    <p><strong>Hermanos Jota - Casa Taller</strong><br>
+                    Av. San Juan 2847 <br>
+                    C1232AAB — Barrio de San Cristóbal<br>
+                    Ciudad Autónoma de Buenos Aires<br>
+                    Argentina</p><br>
+                    <p><strong>Horarios:</strong><br>
+                    Lunes a Viernes: 10:00 - 19:00 <br>
+                    Sabados: 10:00 - 14:00</p>
+                </div>
+
+                <div class="footer__column">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><strong>Sitio web </strong> 
+                            <a href="https://www.hermanosjota.com.ar" target="_blank">www.hermanosjota.com.ar</a>
+                        </li>
+                        <li><strong>Email </strong> 
+                            <a href="mailto:info@hermanosjota.com.ar">info@hermanosjota.com.ar</a>
+                        </li>
+                        <li><strong>Ventas </strong>
+                            <a href="mailto:ventas@hermanosjota.com.ar">ventas@hermanosjota.com.ar</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer__column">
+                    <h4>Seguinos</h4>
+                        <div class="social-links">
+                            <a href="https://alt-5a31a0302d72d.blackboard.com/bbcswebdav/pid-982156-dt-content-rid-14612411_1/courses/FSD.00-43441/Instagram%20copy/index.html?one_hash=0E71051EFD76C4C85225E6C4BEFAFB96&f_hash=8276A10384141EF6731550D16157DCA7" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://wa.me/541145678900" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                </div>
+            </div>
+
+            <div class="footer__credits">
+                <p>&copy; 2025 Hermanos Jota. Todos los derechos reservados.</p>
+            </div>
 
         <script src="productos/productos.js"></script>
     </body>

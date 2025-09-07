@@ -12,7 +12,7 @@ function limpiarContenedor() {
 const obtenerProductos = () => {
     return new Promise((resolve) => {
         setTimeout(() => {
-            resolve(true); // o resolve(productos) si quisieras devolver algo
+            resolve(true);
         }, 1500);
     });
 };
@@ -31,7 +31,7 @@ async function cargarCatalogo(productos) {
             
             const loadingMessage = document.createElement('p');
             loadingMessage.className = 'loading-message';
-            loadingMessage.textContent = 'Cargando nuestros mejores diseños...';
+            loadingMessage.textContent = 'Cargando catálogo de productos...';
             gridDestacados.appendChild(loadingMessage);
 
             const productosObtenidos = await obtenerProductos();

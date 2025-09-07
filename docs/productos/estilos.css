@@ -1,13 +1,3 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body{
-    font-family: sans-serif;
-}
-
 h1{
     text-align: center;
     color: #A0522D;
@@ -50,7 +40,7 @@ h1{
   text-align: center;
 }
 
-/* PRODUCTO DETALLE */
+/* ESTILO PAG PRODUCTO DETALLE */
 #btn-back{
     display: inline-block;
     margin-left: 20px;
@@ -126,15 +116,7 @@ h1{
   transform: scale(1.02);
 }
 
-#card-container{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    margin: 30px;
-}
-
-
- /* Pantallas medianas (el breakpoint es 768px) */
+/* Pantallas medianas (el breakpoint es 768px) */
 @media (min-width: 768px) {
     #card-container {
       flex-direction: row; /* Cuando la pantalla mida 768px o más, las cajas se ponen en fila */
