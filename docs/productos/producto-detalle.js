@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const params = new URLSearchParams(window.location.search);
     const productoId = parseInt(params.get("id"));
 
-    fetch("../data/productos.json") 
+    fetch("data/productos.json") 
         .then(res => res.json())
         .then(productos => {
             const producto = productos.find(p => p.id === productoId);
@@ -30,7 +30,7 @@ function mostrarDetalles(producto) {
     const img = document.createElement("img");
     const nombre = producto.nombre;
     img.alt = nombre;
-    img.src = `../${producto.imagen}`;
+    img.src = `${producto.imagen}`;
 
     const figure = document.createElement("figure");
     figure.id = "product-img";

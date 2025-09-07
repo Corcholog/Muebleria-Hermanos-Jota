@@ -16,49 +16,50 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const renderizarProductosIndex = (productos) => {
-        const gridDestacados = document.getElementById('productos-destacados-grid');
+    const gridDestacados = document.getElementById('productos-destacados-grid');
+    
+    while (gridDestacados.firstChild) {
+        gridDestacados.removeChild(gridDestacados.firstChild);
+    }
+
+    const productosParaMostrar = productos.slice(0, 5);
+
+    productosParaMostrar.forEach(producto => {
+        // ... (creación de elementos card, imagen, etc. se mantiene igual)
+        const card = document.createElement('article');
+        const imagen = document.createElement('img');
+        const contentDiv = document.createElement('div');
+        const nombre = document.createElement('h2');
+        const precio = document.createElement('p');
+        const link = document.createElement('a');
+
+        card.className = 'card';
+        imagen.src = producto.imagen;
+        imagen.alt = producto.nombre;
+        nombre.textContent = producto.nombre;
+        precio.className = 'precio';
         
-        while (gridDestacados.firstChild) {
-            gridDestacados.removeChild(gridDestacados.firstChild);
-        }
+        // --- LÍNEA CORREGIDA ---
+        // 1. Convertimos el número (112.399) a un string ("112.399").
+        // 2. Reemplazamos el punto con nada para obtener "112399".
+        // 3. Convertimos ese string de vuelta a un número entero (112399).
+        // 4. Ahora sí, formateamos el número correcto.
+        const precioCorregido = parseInt(String(producto.precio).replace('.', ''));
+        precio.textContent = `$${precioCorregido.toLocaleString('es-AR')}`;
 
-        // Se muestran los primeros 5 productos como destacados
-        const productosParaMostrar = productos.slice(0, 5);
+        link.className = 'btn-detalle';
+        link.href = `productos/producto-detalle.html?id=${producto.id}`;
+        link.textContent = 'Ver Detalles';
 
-        productosParaMostrar.forEach(producto => {
-            const card = document.createElement('article');
-            const imagen = document.createElement('img');
-            const contentDiv = document.createElement('div');
-            const nombre = document.createElement('h2');
-            const precio = document.createElement('p');
-            const link = document.createElement('a');
-
-            card.className = 'card';
-            
-            // La ruta de la imagen viene del JSON
-            imagen.src = producto.imagen;
-            imagen.alt = producto.nombre;
-            
-            nombre.textContent = producto.nombre;
-            
-            precio.className = 'precio';
-            // Formateamos el precio que viene del JSON
-            precio.textContent = `$${producto.precio.toLocaleString('es-AR', { minimumFractionDigits: 3 }).replace(/\./g, ',').slice(0, -4)}`;
-
-            link.className = 'btn-detalle';
-            link.href = `productos/producto-detalle.html?id=${producto.id}`;
-            link.textContent = 'Ver Detalles';
-
-            contentDiv.appendChild(precio);
-            contentDiv.appendChild(link);
-
-            card.appendChild(nombre);
-            card.appendChild(imagen);
-            card.appendChild(contentDiv);
-            
-            gridDestacados.appendChild(card);
-        });
-    };
+        contentDiv.appendChild(precio);
+        contentDiv.appendChild(link);
+        card.appendChild(nombre);
+        card.appendChild(imagen);
+        card.appendChild(contentDiv);
+        
+        gridDestacados.appendChild(card);
+    });
+};
 
     // --- FUNCIÓN PRINCIPAL ASÍNCRONA (CASI NO CAMBIA) ---
     const main = async () => {
