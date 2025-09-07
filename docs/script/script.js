@@ -25,33 +25,34 @@ document.addEventListener('DOMContentLoaded', () => {
             const card = document.createElement('article');
             const imagen = document.createElement('img');
             const contentDiv = document.createElement('div');
-            const nombre = document.createElement('h3');
+            const nombre = document.createElement('h2');
             const precio = document.createElement('p');
             const link = document.createElement('a');
 
-            card.className = 'producto-card';
+            card.className = 'card';
             imagen.src = producto.imagen;
             imagen.alt = producto.nombre;
-            imagen.className = 'card__imagen';
-            contentDiv.className = 'card__content';
+            //imagen.className = 'card__imagen';
             
-            nombre.className = 'card__nombre';
+            //nombre.className = 'card__nombre';
             nombre.textContent = producto.nombre;
             
-            precio.className = 'card__precio';
+            precio.className = 'precio';
             precio.textContent = `$${producto.precio.toLocaleString('es-AR')}`;
             
-            link.className = 'card__cta';
+            link.className = 'btn-detalle';
             link.href = `producto.html?id=${producto.id}`;
             link.textContent = 'Ver Detalles';
 
             // construye la estructura jerarquicamente
-            contentDiv.appendChild(nombre);
             contentDiv.appendChild(precio);
             contentDiv.appendChild(link);
-            
+
+            card.appendChild(nombre);
             card.appendChild(imagen);
             card.appendChild(contentDiv);
+            
+            
             
             gridDestacados.appendChild(card);
         });
