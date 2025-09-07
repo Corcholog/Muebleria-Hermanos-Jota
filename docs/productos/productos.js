@@ -85,7 +85,7 @@ async function cargarCatalogo(productos) {
 // -------------------------
 // Fetch de productos desde JSON
 // -------------------------
-fetch("../data/productos.json")
+fetch("data/productos.json")
     .then(res => res.json())
     .then(productos => {
         productosGlobales = productos;

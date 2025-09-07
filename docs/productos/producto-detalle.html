@@ -1,39 +1,21 @@
-<!--
-    Mostrar la información detallada del producto seleccionado.
-    Incluir un botón "Añadir al Carrito
--->
 <!DOCTYPE html>
 <html lang="es">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="estilos.css" />
-
+    <base href="../">
+    <link rel="stylesheet" href="productos/estilos.css" />
     <title>Detalles del producto</title>
-  </head>
-  <body>
+</head>
+<body>
     <header>
-      <h1 class="section-title">Aparador Uspallata</h1>
-      <a href="productos.html" id="btn-back"> ← Volver al catálogo</a>
+        <h1 id="product-title" class="section-title">Cargando...</h1>
+        <a href="productos/productos.html" id="btn-back"> ← Volver al catálogo</a>
     </header>
-
     <main>
-      <article id="product-details">
-        <figure id="product-img">
-          <img src="imagenes/Aparador_Uspallata.png" alt="" />
-        </figure>
-        <section id="product-info">
-          <h2>Detalles del producto</h2>
-
-          <div class="detail"><span>Medidas:</span> 100 × 35 × 200 cm</div>
-          <div class="detail"><span>Materiales:</span> Nogal macizo FSC®, herrajes de latón</div>
-          <div class="detail"><span>Acabado:</span> Aceite natural ecológico</div>
-          <div class="detail"><span>Peso:</span> 68 kg</div>
-          <div class="detail"><span>Capacidad:</span> 6 compartimentos interiores</div>
-
-          <button class="btn-cart">Añadir al Carrito</button>
-        </section>
-      </article>
+        <article id="product-details"></article>
     </main>
-  </body>
+
+    <script src="productos/producto-detalle.js"></script>
+</body>
 </html>

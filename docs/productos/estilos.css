@@ -15,6 +15,15 @@ h1{
     padding: 10px;
 }
 
+.precio {
+  color: #fff;
+  font-size: 1.7rem;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  margin: 10px 0;
+  font-weight: bold;
+  padding: 7px;
+  background-color: rgba(0, 0, 0, 0.233);
+}
 
 .section-title{
     font-family: 'Playfair Display', serif;
