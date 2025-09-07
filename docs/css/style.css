@@ -140,6 +140,11 @@ body {
     width: 2.2rem;
 }
 
+.cart-widget a, .cart-widget span {
+    color: var(--color-principal);
+    text-decoration: none;
+}
+
 /* --- SIDEBAR --- */
 /* width: 18.75rem; */
 .sidebar__container {
