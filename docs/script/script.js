@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
             precio.textContent = `$${producto.precio.toLocaleString('es-AR', { minimumFractionDigits: 3 }).replace(/\./g, ',').slice(0, -4)}`;
 
             link.className = 'btn-detalle';
-            link.href = `producto.html?id=${producto.id}`;
+            link.href = `productos/producto-detalle.html?id=${producto.id}`;
             link.textContent = 'Ver Detalles';
 
             contentDiv.appendChild(precio);
