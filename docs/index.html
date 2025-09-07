@@ -11,7 +11,7 @@
     <header class="header">
         <div class="header__container">
             <div class="menu__container">
-                <div class="menu-toggle" aria-label="Abrir menu">
+                <div class="menu-toggle" aria-label="Abrir menu" id="menu">
                     <img src="imagenes/menu-svgrepo-com.svg">
                 </div>
             </div>
@@ -23,9 +23,12 @@
                     </a>
                 </div>
                 <div class="nav__container">
+                    <a class="search__item" href="#">
+                        <img src="../docs/imagenes/search-svgrepo-com.svg" alt="">
+                        <p>Busqueda</p>
+                    </a>
                     <ul class="nav__links">
-                        <li class="nav__items"><a href="productos/productos.html">Productos</a></li>  
-                        <li class="nav__items"><a href="about_as.html">Sobre Nosotros</a></li>
+                        <li class="nav__items"><a href="productos/productos.html">Productos</a></li>
                         <li class="nav__items"><a href="contacto.html">Contacto</a></li>
                     </ul>
                 </div>
@@ -44,6 +47,36 @@
             </div>
         </div>
     </header>
+    <aside class="sidebar__container" id="sidebar">
+        <nav class="sidebar__nav">
+            <ul class="sidebar__links">
+                <li class="sidebar__items">
+                    <a class="search" href="#">
+                        <img src="../docs/imagenes/search-svgrepo-com.svg" alt="">
+                        <p>Buscar</p>
+                    </a>
+                </li>
+                <li class="sidebar__items">
+                    <a href="index.html">
+                        <img src="../docs/imagenes/home-svgrepo-com (1).svg" alt="">
+                        <p>Pagina de Inicio</p>
+                    </a>
+                </li>
+                <li class="sidebar__items">
+                    <a href="productos/productos.html">
+                        <img src="../docs/imagenes/ad-product-svgrepo-com.svg" alt="">
+                        <p>Productos</p>
+                    </a>
+                </li>
+                <li class="sidebar__items">
+                    <a href="#">
+                        <img src="../docs/imagenes/user-svgrepo-com.svg" alt="">
+                        <p>Usuario</p>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
     <main>
         <section class="hero">
             <div class="hero__container">
@@ -112,5 +145,6 @@
             </div>
     </footer>
         <script src="script/script.js"></script>
+        <script src="script/search.js"></script>
     </body>
 </html>

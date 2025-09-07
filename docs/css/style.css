@@ -40,14 +40,7 @@ body {
 
 /* --- IZQUIERDA --- */
 .menu__container {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    padding: 10px;
-}
-
-.menu-toggle img {
-    width: 2.1rem;
+    display: none;
 }
 
 .nav__bar {
@@ -81,6 +74,24 @@ body {
     align-items: center;
     justify-content: center;
     width: auto;
+}
+
+.search__item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--color-suave);
+    padding: 0.3rem;
+    margin-bottom: 0.1rem;
+    text-decoration: none;
+    color: var(--color-principal);
+    gap: 1.1rem;
+    font-weight: 500;
+    font-size: 1.2rem;
+    border-radius: 0.3rem;
+}
+
+.search__item img {
+    width: 1.7rem;
 }
 
 .nav__links {
@@ -128,6 +139,53 @@ body {
 .cart-widget a img {
     width: 2.2rem;
 }
+
+/* --- SIDEBAR --- */
+/* width: 18.75rem; */
+.sidebar__container {
+    width: 0;
+    height: 100%;
+    position: fixed;
+    margin-top: 94px;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    padding: 1.1rem 0;
+    border-right: 1px solid var(--color-suave);
+    overflow-y: auto;
+    background-color: var(--color-fondo);
+    transition: width 0.5s ease;
+}
+.sidebar__container.menu--toggle {
+    width: 18.75rem;
+}
+.sidebar__items a {
+    display: flex;
+    align-items: center;
+    gap: 1.3rem;
+    padding: 0.9rem 0.7rem;
+    text-decoration: none;
+    margin: 0 0.5rem;
+    border-radius: 0.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    color: var(--color-principal);
+}
+
+.sidebar__items a:hover {
+    opacity: 0.9;
+}
+
+.sidebar__items img {
+    width: 1.7rem;
+}
+
+.sidebar__items a.search {
+    border-bottom: 1px solid var(--color-suave);
+    padding: 1rem 0.7rem;
+    margin-bottom: 0.2rem;
+}
+
 
 /* --- FOOTER --- */
 
@@ -447,6 +505,17 @@ body {
 
 /* --- PARA TABLETS VERTICALES (Hasta 768px) --- */
 @media (max-width: 768px) {
+    .menu__container {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        padding: 0;
+        margin-left: 5px;
+    }
+
+    .menu-toggle img {
+        width: 1.9rem;
+    } 
     /* Ocultamos los enlaces de navegación de la barra principal */
     .nav__container {
         display: none;
@@ -455,7 +524,7 @@ body {
     /* Ajustamos el header para que el logo y el menú queden bien alineados */
     .header__container {
         justify-content: space-between; /* Espacia los elementos a los extremos */
-        padding: 0 20px; /* Añade un poco de padding lateral */
+        padding: 0; /* Añade un poco de padding lateral */
     }
 
     .nav__bar {
@@ -561,9 +630,22 @@ body {
 }
 
 
-
 /* --- PARA MÓVILES (Hasta 480px) --- */
 @media (max-width: 480px) {
+    .header__container {
+        justify-content: space-between; /* Espacia los elementos a los extremos */
+        padding: 0; /* Añade un poco de padding lateral */
+    }
+
+    .nav__bar {
+        justify-content: center; /* Centra el logo cuando los enlaces no están */
+        width: auto;
+    }
+
+    .funcionalidades__container {
+        gap: 0;
+    }
+
     .hero {
         /* Reducimos un poco la altura en las pantallas más pequeñas */
         min-height: 80vh;
