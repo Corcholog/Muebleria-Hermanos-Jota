@@ -38,12 +38,6 @@ function mostrarDetalles(producto) {
     const figure = document.createElement("figure");
     figure.id = "product-img";
     figure.appendChild(img);
-    
-    const sectionInfo = document.createElement("section");
-    sectionInfo.id = "product-info";
-    const h2 = document.createElement("h2");
-    h2.textContent = nombre;
-    sectionInfo.appendChild(h2);
 
     const precioElement = document.createElement("p");
     precioElement.className = "precio";
@@ -51,7 +45,15 @@ function mostrarDetalles(producto) {
     // se eliminan los . del precio y se obtiene el numero como float
     const precioNumerico = parseFloat(String(producto.precio).replace('.', ''));
     precioElement.textContent = `$${precioNumerico.toLocaleString('es-AR')}`;
-    sectionInfo.appendChild(precioElement);
+    figure.appendChild(precioElement);
+    
+    const sectionInfo = document.createElement("section");
+    sectionInfo.id = "product-info";
+    const h2 = document.createElement("h2");
+    h2.textContent = "Detalles del producto";
+    sectionInfo.appendChild(h2);
+
+
 
     if (producto.detalles) {
         for (const atributo in producto.detalles) {
