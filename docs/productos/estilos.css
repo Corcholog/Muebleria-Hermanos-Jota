@@ -1,20 +1,11 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body{
-    font-family: sans-serif;
-}
-
-header h1{
+h1{
     text-align: center;
     color: #A0522D;
     margin: 30px;
     padding: 10px;
 }
 
+/* ESTILOS PAG CATALOGO PRODUCTOS */
 #card-container{
     display: flex;
     flex-direction: column;
@@ -22,31 +13,8 @@ header h1{
     margin: 30px;
 }
 
-.card{
-    border-radius: 12px;    
-    text-align: center;
-    background-color: #A0522D;
-}
-
-.card img {
-  max-width: 90%;
-  height: auto;
-  border-radius: 8px;
-  background-color: #87A96B;
-  box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
-}
-
-
-.card h2{
-    margin-top: 10px;
-    color: white;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    padding: 15px;
-}
-
-.card:hover {
-  background-color: #B36A5C; /* un tono más oscuro al hover */
-  transform: scale(1.03);    /* leve agrandamiento al pasar el puntero */
+.card img{
+    height: auto;
 }
 
 .precio {
@@ -55,26 +23,13 @@ header h1{
   font-family: Georgia, 'Times New Roman', Times, serif;
   margin: 10px 0;
   font-weight: bold;
-}
-
-.btn-detalle {
-  display: inline-block;
-  background-color: #fff;
-  color: #A0522D;
-  padding: 10px 20px;
-  margin-bottom: 15px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.btn-detalle:hover {
-  background-color: #f1f1f1;
+  padding: 7px;
+  background-color: rgba(0, 0, 0, 0.233);
 }
 
 .section-title{
     font-family: 'Playfair Display', serif;
-    font-size: 2rem;
+    font-size: 2.2rem;
     color: #A0522D;
     margin-bottom: 25px;
     position: relative;
@@ -97,7 +52,7 @@ header h1{
   text-align: center;
 }
 
-/* PRODUCTO DETALLE */
+/* ESTILOS PAG PRODUCTO DETALLE */
 #btn-back{
     display: inline-block;
     margin-left: 20px;
@@ -120,8 +75,8 @@ header h1{
 }
 
 #product-img {
-  display: flex;
-  justify-content: center;
+  position: relative;
+  display: inline-block;
 }
 
 #product-img img {
@@ -129,6 +84,17 @@ header h1{
   border-radius: 12px;
   background-color: #87A96B;
   box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
+  display: block;
+}
+
+#product-img .precio {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  background: rgba(0,0,0,0.6);
+  padding: 8px;
 }
 
 #product-info h2 {
@@ -173,9 +139,7 @@ header h1{
   transform: scale(1.02);
 }
 
-
-
- /* Pantallas medianas (el breakpoint es 768px) */
+/* Pantallas medianas (el breakpoint es 768px) */
 @media (min-width: 768px) {
     #card-container {
       flex-direction: row; /* Cuando la pantalla mida 768px o más, las cajas se ponen en fila */
@@ -190,10 +154,6 @@ header h1{
 
     .card img{
         width: 80%;
-    }
-
-    .btn-detalle {
-        display: none;
     }
 
     #product-details{
@@ -220,7 +180,7 @@ header h1{
     }
 
     .card img{
-        width: 70%;
+        width: 100%;
     }
 
     section{
@@ -235,6 +195,10 @@ header h1{
 
     #product-img img{
         max-width: 90%;
+    }
+
+    #product-img .precio{
+      width: 90%;
     }
 
     #product-info{
