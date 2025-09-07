@@ -811,6 +811,50 @@ textarea.input{
     }
 }
 
+@media(max-width: 1024px){
+
+    .form{
+        grid-template-columns: 1fr;
+    }
+
+    .contact__info, 
+    .info{
+        text-align: center;
+    }
+
+    .info{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media(max-width: 768px){
+    .form__container{
+        padding: 1rem;
+    }
+
+    .form{
+        max-width: 100%;
+        border-radius: 8px;
+    }
+
+    .input{
+        font-size: 1rem;
+    }
+}
+
+@media(max-width: 480px){
+    .contact__info, 
+    .contact__form{
+        padding: 1.2rem;
+    }
+
+    #contact-us, 
+    #contact-info{
+        font-size: 1.5rem;
+    }
+}
 
 /* --- PARA MÓVILES (Hasta 480px) --- */
 @media (max-width: 480px) {
