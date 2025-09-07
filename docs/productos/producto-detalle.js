@@ -30,7 +30,7 @@ function mostrarDetalles(producto) {
     const img = document.createElement("img");
     const nombre = producto.nombre;
     img.alt = nombre;
-    img.src = `../${producto.imagen}`; 
+    img.src = `../${producto.imagen}`;
 
     const figure = document.createElement("figure");
     figure.id = "product-img";
