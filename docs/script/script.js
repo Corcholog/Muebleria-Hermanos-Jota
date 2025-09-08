@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // AHORA USA FETCH PARA CARGAR EL JSON
     const obtenerProductos = async () => {
-        // Asegúrate de que la ruta a tu archivo JSON sea correcta
         const response = await fetch('data/productos.json');
         
         // Si la respuesta no es OK (ej: error 404), lanza un error
@@ -25,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const productosParaMostrar = productos.slice(0, 5);
 
     productosParaMostrar.forEach(producto => {
-        // ... (creación de elementos card, imagen, etc. se mantiene igual)
         const card = document.createElement('article');
         const imagen = document.createElement('img');
         const contentDiv = document.createElement('div');
@@ -38,12 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
         imagen.alt = producto.nombre;
         nombre.textContent = producto.nombre;
         precio.className = 'precio';
-        
-        // --- LÍNEA CORREGIDA ---
-        // 1. Convertimos el número (112.399) a un string ("112.399").
-        // 2. Reemplazamos el punto con nada para obtener "112399".
-        // 3. Convertimos ese string de vuelta a un número entero (112399).
-        // 4. Ahora sí, formateamos el número correcto.
         const precioCorregido = parseInt(String(producto.precio).replace('.', ''));
         precio.textContent = `$${precioCorregido.toLocaleString('es-AR')}`;
 
@@ -61,7 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 };
 
-    // --- FUNCIÓN PRINCIPAL ASÍNCRONA (CASI NO CAMBIA) ---
     const main = async () => {
         const gridDestacados = document.getElementById('productos-destacados-grid');
         try {
@@ -73,7 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
             loadingMessage.textContent = 'Cargando nuestros mejores diseños...';
             gridDestacados.appendChild(loadingMessage);
 
-            // La magia ocurre aquí: llama a la nueva función con fetch
             const productosObtenidos = await obtenerProductos();
             renderizarProductosIndex(productosObtenidos);
 
