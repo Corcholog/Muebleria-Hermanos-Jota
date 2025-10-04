@@ -1,3 +1,5 @@
+const productos = require('../data/productos.json')
+
 //función que trae todos los elementos del array
 const getAll = (req, res) => {
     res.json(productos)
@@ -10,7 +12,7 @@ const getById = (req, res) => {
     const producto = productos.find(p => p.id === id)
 
     if(!producto){
-        return res.status(404).json({message: "Producto no encontrado"})
+        return res.status(404).json({message: "El producto no existe, vuelve a intentarlo."})
     }
 
     res.json(producto)
@@ -37,7 +39,7 @@ const update = (req, res) => {
     const producto = productos.find(p => p.id === id)
 
     if(!producto){
-        return res.status(404).json({message: "Producto no encontrado"})
+        return res.status(404).json({message: "El producto no existe, vuelve a intentarlo."})
     }
 
     // sobreescribimos los existentes por los nuevos
@@ -51,11 +53,19 @@ const update = (req, res) => {
         producto.precio = precio;
     }
     if(detalles){
+        const clavesInvalidas = [];
+        
         // Actualizamos solo las claves de detalles que estén presentes
         for (let key in detalles) {
-            if (detalles.hasOwnProperty(key) && producto.detalles[key] !== undefined) {
+            if (producto.detalles.hasOwnProperty(key)) {
                 producto.detalles[key] = detalles[key];
+            }else{
+                clavesInvalidas.push(key);
             }
+        }
+
+        if (clavesInvalidas.length > 0) {
+            return res.status(400).json({message: `Los siguientes campos de 'detalles' no existen: ${clavesInvalidas.join(', ')}`});
         }
     }
 
@@ -69,11 +79,11 @@ const remove = (req, res) => {
     const index = productos.findIndex(p => p.id === id)
 
     if(index === -1) {
-        return res.status(404).json({message: "Producto no encontrado"})
+        return res.status(404).json({message: "El producto no existe, vuelve a intentarlo."})
     }
 
     productos.splice(index, 1)
-    res.json({message: "Producto eliminado"})
+    res.json({message: "Producto eliminado correctamente"})
 }
 
 // exportación de los controladores
