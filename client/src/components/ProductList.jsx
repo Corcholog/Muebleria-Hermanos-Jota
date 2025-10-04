@@ -3,7 +3,7 @@ import ProductCard from './ProductCard';
 
 const API = "http://localhost:3000/api/productos";
 
-function ProductList() {
+function ProductList({ setSelectedProduct }) {
   
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -42,7 +42,7 @@ function ProductList() {
           {error && <p>{error}</p>}
           
           {!loading && !error && productos.map(producto => (
-            <ProductCard key={producto.id} producto={producto} />
+            <ProductCard key={producto.id} producto={producto} onSelect={() => setSelectedProduct(producto)}/>
           ))}
         </div>
       </div>

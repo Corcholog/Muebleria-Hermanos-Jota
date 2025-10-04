@@ -6,12 +6,14 @@ import ProductList from './components/ProductList';
 import Footer from './components/Footer';
 import ContactForm from './components/ContactForm'; 
 import './App.css';
+import ProductDetail from './components/ProductDetail';
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   
   // estado que mantiene la vista actual
   const [currentView, setCurrentView] = useState('home');
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -23,6 +25,12 @@ function App() {
     setIsSidebarOpen(false); 
   };
 
+  // función de navegacion para detalle producto
+  const goToDetail = (producto) => {
+    setSelectedProduct(producto);
+    setCurrentView('detail');
+  };
+
   return (
     <>
       <Navbar toggleSidebar={toggleSidebar} navigateTo={navigateTo} />
@@ -32,14 +40,13 @@ function App() {
         {currentView === 'home' && (
           <>
             <HeroBanner />
-            <ProductList />
+            <ProductList setSelectedProduct={goToDetail} />
           </>
         )}
         
         {currentView === 'contact' && <ContactForm />}
         
-        {/* Falta agregar la pagina completa de productos */}
-        {/* {currentView === 'products' && <CatalogoCompleto />} */}
+        {currentView === 'detail' && (<ProductDetail producto={selectedProduct} volver={()=> setCurrentView('home')}/>)}
       </main>
       
       <Footer />
