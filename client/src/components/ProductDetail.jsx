@@ -1,4 +1,5 @@
 import React from "react";
+import '../ProductStyles.css';
 
 function ProductDetail({ producto, volver, onAddToCart}) {
   if (!producto) {
@@ -14,7 +15,7 @@ function ProductDetail({ producto, volver, onAddToCart}) {
   return (
     <main className="producto-detalle">
       {/* Botón para volver */}
-      <button onClick={volver} className="btn-volver">← Volver al catálogo</button>
+      <button onClick={volver} className="-volvbtner">← Volver al catálogo</button>
 
       {/* Título del producto */}
       <h1 id="product-title" className="section-title">{producto.nombre}</h1>

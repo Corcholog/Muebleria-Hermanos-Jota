@@ -2,7 +2,7 @@
     {
         "id":1,
         "nombre": "Aparador Uspallata", 
-        "imagen": "imagenes/Aparador_Uspallata.png", 
+        "imagen": "/imagenes/Aparador_Uspallata.png", 
         "precio": 112.399,
         "detalles": {
             "Medidas": "180 × 45 × 75 cm",
@@ -15,7 +15,7 @@
     {
         "id":2, 
         "nombre": "Biblioteca Recoleta", 
-        "imagen": "imagenes/Biblioteca_Recoleta.png", 
+        "imagen": "/imagenes/Biblioteca_Recoleta.png", 
         "precio": 134.759,
         "detalles": {
             "Medidas": "100 × 35 × 200 cm",
@@ -28,7 +28,7 @@
     {
         "id":3, 
         "nombre": "Butaca Mendoza", 
-        "imagen": "imagenes/Butaca_Mendoza.png", 
+        "imagen": "/imagenes/Butaca_Mendoza.png", 
         "precio": 98.999,
         "detalles": {
             "Medidas": "80 × 75 × 85 cm",
@@ -41,7 +41,7 @@
     {
         "id":4, 
         "nombre": "Escritorio Costa", 
-        "imagen": "imagenes/Escritorio_Costa.png", 
+        "imagen": "/imagenes/Escritorio_Costa.png", 
         "precio": 105.249,
         "detalles": {
             "Medidas": "120 × 60 × 75 cm",
@@ -54,7 +54,7 @@
     {
         "id":5, 
         "nombre": "Mesa Comedor Pampa", 
-        "imagen": "imagenes/Mesa_Comedor_Pampa.png", 
+        "imagen": "/imagenes/Mesa_Comedor_Pampa.png", 
         "precio": 121.909,
         "detalles": {
             "Medidas": "160-240 × 90 × 75 cm",
@@ -67,7 +67,7 @@
     {
         "id":6, 
         "nombre": "Mesa de Centro Araucaria", 
-        "imagen": "imagenes/Mesa_de_Centro_Araucaria.png", 
+        "imagen": "/imagenes/Mesa_de_Centro_Araucaria.png", 
         "precio": 117.459,
         "detalles": {
             "Medidas": "90 × 90 × 45 cm",
@@ -80,7 +80,7 @@
     {
         "id":7, 
         "nombre": "Mesa de Noche Aconcagua", 
-        "imagen": "imagenes/Mesa_de_Noche_Aconcagua.png", 
+        "imagen": "/imagenes/Mesa_de_Noche_Aconcagua.png", 
         "precio": 99.819,
         "detalles": {
             "Medidas": "45 × 35 × 60 cm",
@@ -93,7 +93,7 @@
     {
         "id":8, 
         "nombre": "Silla de Trabajo Belgrano", 
-        "imagen": "imagenes/Silla_de_Trabajo_Belgrano.png", 
+        "imagen": "/imagenes/Silla_de_Trabajo_Belgrano.png", 
         "precio": 128.309,
         "detalles": {
             "Medidas": "60 × 60 × 90-100 cm",
@@ -106,7 +106,7 @@
     {
         "id":9, 
         "nombre": "Sillas Córdoba", 
-        "imagen": "imagenes/Sillas_Córdoba.png", 
+        "imagen": "/imagenes/Sillas_Córdoba.png", 
         "precio": 103.699,
         "detalles": {
             "Medidas": "45 × 52 × 80 cm (cada una)",
@@ -119,7 +119,7 @@
     {
         "id":10, 
         "nombre": "Sillón Copacabana", 
-        "imagen": "imagenes/Sillón_Copacabana.png", 
+        "imagen": "/imagenes/Sillón_Copacabana.png", 
         "precio": 115.729,
         "detalles": {
             "Medidas": "90 × 85 × 95 cm",
@@ -132,7 +132,7 @@
     {
         "id":11, 
         "nombre": "Sofá Patagonia", 
-        "imagen": "imagenes/Sofá_Patagonia.png", 
+        "imagen": "/imagenes/Sofá_Patagonia.png", 
         "precio": 123.499,
         "detalles": {
             "Medidas": "220 × 90 × 80 cm",
