@@ -28,7 +28,7 @@ app.use((err, req, res, next) => {
 });
 
 //Levantar servidor
-const PORT = 3000;
+const PORT = 5000;
 app.listen(PORT, () => {
     console.log(`App corriendo en http://localhost:${PORT}`)
 })
