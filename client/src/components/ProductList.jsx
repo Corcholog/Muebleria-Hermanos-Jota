@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import ProductCard from './ProductCard'; 
+import '../ProductStyles.css';
 
 const API = "http://localhost:5000/api/productos";
 
