@@ -4,7 +4,7 @@ import '../ProductStyles.css';
 
 const API = "http://localhost:5000/api/productos";
 
-function ProductList({ setSelectedProduct }) {
+function ProductList({ setSelectedProduct, limit, handleAddToCart }) {
   
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -32,21 +32,59 @@ function ProductList({ setSelectedProduct }) {
   useEffect(() => {
     fetchProducts();
   }, [])
-  
+
+  const productosAmostrar = limit ? productos.slice(0, limit) : productos;
+
+  //Determina el ID y el título basado en 'limit'
+  const isHighlighted = limit > 0;
+  const cardButtonText = isHighlighted ? "Ver Detalles" : "Añadir al carrito"; 
+  const cardButtonAction = isHighlighted ? setSelectedProduct : handleAddToCart; 
+  const gridId = isHighlighted ? "productos-destacados-grid" : "card-container";
+  const sectionClass = isHighlighted ? "destacados" : "catalogo";
+  const titleText = isHighlighted ? "Nuestros Destacados" : "Catálogo de nuestros productos";
+
   return (
-    <section className="destacados">
-      <div className="destacados__container">
-        <h2 className="destacados__title">Nuestros Destacados</h2>
-        <div id="productos-destacados-grid" className="destacados__grid">
+    <section className={sectionClass}>
+      {isHighlighted ? (
+        // ESTRUCTURA PARA NUESTROS DESTACADOS
+        <div className="destacados__container">
+          <h2 className="destacados__title section-title">{titleText}</h2>
           
-          {loading && <p>Cargando...</p>}
-          {error && <p>{error}</p>}
-          
-          {!loading && !error && productos.map(producto => (
-            <ProductCard key={producto.id} producto={producto} onSelect={() => setSelectedProduct(producto)}/>
-          ))}
+          <div id={gridId} className="destacados__grid">              
+            {loading && <p>Cargando...</p>}
+            {error && <p>{error}</p>}
+             
+            {!loading && !error && productosAmostrar.map(producto => (
+              <ProductCard 
+                key={producto.id} 
+                producto={producto} 
+                onSelect={() => setSelectedProduct(producto)}
+                buttonText={cardButtonText} 
+                buttonAction={cardButtonAction}
+              />             
+            ))}
+          </div>
         </div>
-      </div>
+      ) : (
+        // ESTRUCTURA PARA EL CATÁLOGO COMPLETO
+        <>
+          <h1 className="section-title">{titleText}</h1>
+          <section id={gridId}> {/* Usamos el ID del catálogo completo */}
+            {loading && <p>Cargando...</p>}
+            {error && <p>{error}</p>}
+            
+            {!loading && !error && productosAmostrar.map(producto => (
+              <ProductCard 
+                key={producto.id} 
+                producto={producto} 
+                onSelect={() => setSelectedProduct(producto)}
+                buttonText={cardButtonText} 
+                buttonAction={cardButtonAction}
+              />            
+            ))}
+          </section>
+        </>
+      )}
     </section>
   );
 }
