@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Navbar({ toggleSidebar, navigateTo }) {
+function Navbar({ toggleSidebar, navigateTo, cartItemCount}) {
   return (
     <header className="header">
       <div className="header__container">
@@ -36,7 +36,7 @@ function Navbar({ toggleSidebar, navigateTo }) {
           <div className="cart-widget">
             <a href="#" id="cart-btn">
               <img src="/imagenes/shopping-cart-svgrepo-com.svg" alt="Carrito" />
-              <span id="cart-count">0</span>
+              <span id="cart-count">{cartItemCount}</span>
             </a>
           </div>
         </div>

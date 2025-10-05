@@ -15,6 +15,13 @@ function App() {
   const [currentView, setCurrentView] = useState('home');
   const [selectedProduct, setSelectedProduct] = useState(null);
 
+  const [cart, setCart] = useState([]);
+
+  // funcion para añadir productos al estado del carrito.
+  const handleAddToCart = (productToAdd) => {
+    setCart([...cart, productToAdd]);
+    alert(`"${productToAdd.nombre}" se ha añadido al carrito.`);
+  };
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
@@ -33,7 +40,7 @@ function App() {
 
   return (
     <>
-      <Navbar toggleSidebar={toggleSidebar} navigateTo={navigateTo} />
+      <Navbar toggleSidebar={toggleSidebar} navigateTo={navigateTo} cartItemCount={cart.length} />
       <Sidebar isOpen={isSidebarOpen} />
       
       <main>
@@ -46,7 +53,7 @@ function App() {
         
         {currentView === 'contact' && <ContactForm />}
         
-        {currentView === 'detail' && (<ProductDetail producto={selectedProduct} volver={()=> setCurrentView('home')}/>)}
+        {currentView === 'detail' && (<ProductDetail producto={selectedProduct} volver={()=> setCurrentView('home')} onAddToCart={handleAddToCart}/>)}
       </main>
       
       <Footer />

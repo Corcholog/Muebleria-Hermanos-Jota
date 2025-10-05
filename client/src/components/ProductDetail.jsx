@@ -1,6 +1,6 @@
 import React from "react";
 
-function ProductDetail({ producto, volver }) {
+function ProductDetail({ producto, volver, onAddToCart}) {
   if (!producto) {
     return (
       <main className="producto-detalle">
@@ -34,7 +34,7 @@ function ProductDetail({ producto, volver }) {
             </div>
           ))}
 
-          <button className="btn-cart" onClick={() => window.addToCart?.(producto)}> Añadir al Carrito </button>
+          <button className="btn-cart" onClick={() => onAddToCart(producto)}> Añadir al Carrito </button>
         </section>
       </article>
     </main>
