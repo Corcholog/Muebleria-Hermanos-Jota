@@ -5,8 +5,8 @@ import HeroBanner from './components/HeroBanner';
 import ProductList from './components/ProductList';
 import Footer from './components/Footer';
 import ContactForm from './components/ContactForm'; 
-import './App.css';
 import ProductDetail from './components/ProductDetail';
+import './App.css';
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -44,13 +44,18 @@ function App() {
       <Sidebar isOpen={isSidebarOpen} />
       
       <main>
+        {/* VISTA HOME: Muestra el Banner y solo 5 productos (Destacados) */}
         {currentView === 'home' && (
           <>
             <HeroBanner />
-            <ProductList setSelectedProduct={goToDetail} />
+            {/* PASAMOS EL LÍMITE DE 5 */}
+            <ProductList setSelectedProduct={goToDetail} handleAddToCart={handleAddToCart} limit={5} />
           </>
         )}
         
+        {/* VISTA PRODUCT (Catálogo): Muestra TODOS los productos (sin límite) */}
+        {currentView === 'products' && <ProductList setSelectedProduct={goToDetail} handleAddToCart={handleAddToCart} limit={null} />}
+
         {currentView === 'contact' && <ContactForm />}
         
         {currentView === 'detail' && (<ProductDetail producto={selectedProduct} volver={()=> setCurrentView('home')} onAddToCart={handleAddToCart}/>)}
