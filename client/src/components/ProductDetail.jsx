@@ -16,11 +16,12 @@ function ProductDetail({ producto, volver, onAddToCart }) {
 
   return (
     <main className="producto-detalle">
-      <button type="button" onClick={volver} className="-volvbtner volver-btn">
+      <h1 id="product-title" className="section-title">{producto.nombre}</h1>
+
+      <button type="button" onClick={volver} id="btn-back" className="volver-btn">
         ← Volver al catálogo
       </button>
 
-      <h1 id="product-title" className="section-title">{producto.nombre}</h1>
 
       <article id="product-details" className="detalle-container">
         <figure id="product-img">
