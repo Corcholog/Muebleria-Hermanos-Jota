@@ -1,6 +1,8 @@
 import React from 'react';
 
 function Footer() {
+  const year = new Date().getFullYear();
+
   return (
     <footer className="footer">
       <div className="footer__container">
@@ -18,7 +20,7 @@ function Footer() {
             <p>
               <strong>Horarios:</strong><br />
               Lunes a Viernes: 10:00 - 19:00 <br />
-              Sabados: 10:00 - 14:00
+              Sábados: 10:00 - 14:00
             </p>
           </div>
 
@@ -27,7 +29,7 @@ function Footer() {
             <ul>
               <li>
                 <strong>Sitio web </strong>
-                <a href="https://www.hermanosjota.com.ar" target="_blank">
+                <a href="https://www.hermanosjota.com.ar" target="_blank" rel="noopener noreferrer">
                   www.hermanosjota.com.ar
                 </a>
               </li>
@@ -45,10 +47,10 @@ function Footer() {
           <div className="footer__column">
             <h4 className="cat__footer">Seguinos</h4>
             <div className="social__links">
-              <a href="#" target="_blank">
+              <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <i className="fab fa-instagram"></i>
               </a>
-              <a href="#" target="_blank">
+              <a href="#" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
                 <i className="fab fa-whatsapp"></i>
               </a>
             </div>
@@ -56,7 +58,7 @@ function Footer() {
         </div>
 
         <div className="footer__credits">
-          <p>&copy; 2025 Hermanos Jota. Todos los derechos reservados.</p>
+          <p>&copy; {year} Hermanos Jota. Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>

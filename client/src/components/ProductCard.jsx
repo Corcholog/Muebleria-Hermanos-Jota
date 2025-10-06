@@ -1,21 +1,27 @@
 import React from 'react';
 
-function ProductCard({ producto, onSelect, buttonText, buttonAction }) { 
-  return (
-    <article className="card" onClick={onSelect}>
-      
-      <h2>{producto.nombre}</h2>
-      <img src={producto.imagen} alt={producto.nombre} />
-      <p className="precio">${producto.precio.toLocaleString('es-AR')}</p>
+function ProductCard({ producto, onSelect, buttonText, buttonAction }) {
+  const precio = Number(producto.precio);
 
-      <button className="btn-detalle"
+  return (
+    <article className="card" onClick={onSelect} role="button" tabIndex={0}
+      onKeyDown={(e) => e.key === 'Enter' && onSelect?.()}>
+      <h2>{producto.nombre}</h2>
+      <img src={producto.imagen} alt={producto.nombre} loading="lazy" />
+      <p className="precio">
+        ${isNaN(precio) ? producto.precio : precio.toLocaleString('es-AR')}
+      </p>
+
+      <button
+        type="button"
+        className="btn-detalle"
         onClick={(e) => {
-          e.stopPropagation(); // Previene que el clic suba a la tarjeta (onSelect)
-          buttonAction(producto); // Ejecuta la acción específica
+          e.stopPropagation();
+          buttonAction?.(producto);
         }}
       >
-        {buttonText} 
-      </button>    
+        {buttonText}
+      </button>
     </article>
   );
 }

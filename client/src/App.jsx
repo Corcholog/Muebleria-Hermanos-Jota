@@ -1,66 +1,126 @@
+// client/src/App.jsx
 import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import HeroBanner from './components/HeroBanner';
 import ProductList from './components/ProductList';
 import Footer from './components/Footer';
-import ContactForm from './components/ContactForm'; 
+import ContactForm from './components/ContactForm';
 import ProductDetail from './components/ProductDetail';
+import Cart from './components/Cart'; // <-- NUEVO
 import './App.css';
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  
-  // estado que mantiene la vista actual
-  const [currentView, setCurrentView] = useState('home');
+  const [currentView, setCurrentView] = useState('home'); // 'home' | 'products' | 'contact' | 'detail' | 'cart'
   const [selectedProduct, setSelectedProduct] = useState(null);
 
+  // Carrito: líneas con cantidad
   const [cart, setCart] = useState([]);
 
-  // funcion para añadir productos al estado del carrito.
-  const handleAddToCart = (productToAdd) => {
-    setCart([...cart, productToAdd]);
-    alert(`"${productToAdd.nombre}" se ha añadido al carrito.`);
-  };
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
+  const toggleSidebar = () => setIsSidebarOpen((o) => !o);
 
-  // funcion para cambiar de vista, manteniendo el diseño SPA
   const navigateTo = (view) => {
     setCurrentView(view);
-    setIsSidebarOpen(false); 
+    setIsSidebarOpen(false);
   };
 
-  // función de navegacion para detalle producto
   const goToDetail = (producto) => {
     setSelectedProduct(producto);
     setCurrentView('detail');
   };
 
+  // ---- Helpers de carrito (respetando tu estilo) ----
+  const handleAddToCart = (productToAdd) => {
+    setCart((prev) => {
+      const existe = prev.find((it) => it.id === productToAdd.id);
+      if (existe) {
+        return prev.map((it) =>
+          it.id === productToAdd.id ? { ...it, cantidad: it.cantidad + 1 } : it
+        );
+      }
+      // agregamos con cantidad=1
+      return [...prev, { ...productToAdd, cantidad: 1 }];
+    });
+    alert(`"${productToAdd.nombre}" se ha añadido al carrito.`);
+  };
+
+  const incrementQty = (id) => {
+    setCart((prev) =>
+      prev.map((it) => (it.id === id ? { ...it, cantidad: it.cantidad + 1 } : it))
+    );
+  };
+
+  const decrementQty = (id) => {
+    setCart((prev) =>
+      prev
+        .map((it) => (it.id === id ? { ...it, cantidad: it.cantidad - 1 } : it))
+        .filter((it) => it.cantidad > 0) // si llega a 0, se quita
+    );
+  };
+
+  const removeFromCart = (id) => {
+    setCart((prev) => prev.filter((it) => it.id !== id));
+  };
+
+  const clearCart = () => setCart([]);
+
+  // Cantidad total para el badge del Navbar
+  const cartCount = cart.reduce((acc, it) => acc + it.cantidad, 0);
+
   return (
     <>
-      <Navbar toggleSidebar={toggleSidebar} navigateTo={navigateTo} cartItemCount={cart.length} />
-      <Sidebar isOpen={isSidebarOpen} />
-      
+      <Navbar
+        toggleSidebar={toggleSidebar}
+        navigateTo={navigateTo}
+        cartItemCount={cartCount}
+        onCartClick={() => navigateTo('cart')} // <-- para ir a la vista carrito
+      />
+
+      <Sidebar isOpen={isSidebarOpen} navigateTo={navigateTo} />
+
       <main>
-        {/* VISTA HOME: Muestra el Banner y solo 5 productos (Destacados) */}
         {currentView === 'home' && (
           <>
-            <HeroBanner />
-            {/* PASAMOS EL LÍMITE DE 5 */}
-            <ProductList setSelectedProduct={goToDetail} handleAddToCart={handleAddToCart} limit={5} />
+            <HeroBanner navigateTo={navigateTo} />
+            <ProductList
+              setSelectedProduct={goToDetail}
+              handleAddToCart={handleAddToCart}
+              limit={5}
+            />
           </>
         )}
-        
-        {/* VISTA PRODUCT (Catálogo): Muestra TODOS los productos (sin límite) */}
-        {currentView === 'products' && <ProductList setSelectedProduct={goToDetail} handleAddToCart={handleAddToCart} limit={null} />}
+
+        {currentView === 'products' && (
+          <ProductList
+            setSelectedProduct={goToDetail}
+            handleAddToCart={handleAddToCart}
+            limit={null}
+          />
+        )}
 
         {currentView === 'contact' && <ContactForm />}
-        
-        {currentView === 'detail' && (<ProductDetail producto={selectedProduct} volver={()=> setCurrentView('home')} onAddToCart={handleAddToCart}/>)}
+
+        {currentView === 'detail' && (
+          <ProductDetail
+            producto={selectedProduct}
+            volver={() => setCurrentView('home')}
+            onAddToCart={handleAddToCart}
+          />
+        )}
+
+        {currentView === 'cart' && (
+          <Cart
+            items={cart}
+            onIncrement={incrementQty}
+            onDecrement={decrementQty}
+            onRemove={removeFromCart}
+            onClear={clearCart}
+            volver={() => setCurrentView('products')}
+          />
+        )}
       </main>
-      
+
       <Footer />
     </>
   );
