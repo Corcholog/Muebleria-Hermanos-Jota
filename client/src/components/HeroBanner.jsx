@@ -1,15 +1,21 @@
 import React from 'react';
 
-function HeroBanner() {
+function HeroBanner({ navigateTo }) {
   return (
     <section className="hero">
       <div className="hero__container">
         <div className="hero__content">
           <h2 className="hero__title">DISEÑO QUE PERDURA, HISTORIAS QUE COMIENZAN</h2>
           <p className="hero__text">
-            Redescubre el arte de crear muebles que alimentan el alma. Cada pieza combina herencia y diseño, honrando el pasado mientras abraza tu futuro.
+            Redescubrí el arte de crear muebles que alimentan el alma. Cada pieza combina herencia y diseño.
           </p>
-          <a href="/productos" className="hero__cta">Explorar Colección</a>
+          <button
+            type="button"
+            className="hero__cta"
+            onClick={() => navigateTo && navigateTo('products')}
+          >
+            Explorar Colección
+          </button>
         </div>
       </div>
     </section>
