@@ -1,6 +1,7 @@
+// client/src/components/Navbar.jsx
 import React from 'react';
 
-function Navbar({ toggleSidebar, navigateTo, cartItemCount }) {
+function Navbar({ toggleSidebar, navigateTo, cartItemCount, onCartClick }) {
   const go = (view) => navigateTo && navigateTo(view);
 
   return (
@@ -46,7 +47,12 @@ function Navbar({ toggleSidebar, navigateTo, cartItemCount }) {
             </a>
           </div>
           <div className="cart-widget">
-            <a href="#" id="cart-btn" onClick={(e) => e.preventDefault()} aria-label="Carrito">
+            <a
+              href="#"
+              id="cart-btn"
+              onClick={(e) => { e.preventDefault(); onCartClick?.(); }}
+              aria-label="Carrito"
+            >
               <img src="/imagenes/shopping-cart-svgrepo-com.svg" alt="Carrito" />
               <span id="cart-count" aria-live="polite">{cartItemCount}</span>
             </a>
@@ -58,3 +64,4 @@ function Navbar({ toggleSidebar, navigateTo, cartItemCount }) {
 }
 
 export default Navbar;
+
