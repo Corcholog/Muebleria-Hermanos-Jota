@@ -7,6 +7,8 @@ const isValidId = (id) => mongoose.Types.ObjectId.isValid(id);
 // GET /api/productos -> todos
 async function getAll(req, res, next) {
   try {
+    const limit = Math.max(0, Number(req.query.limit) || 0); 
+    const skip  = Math.max(0, Number(req.query.skip)  || 0); 
     const productos = await repo.findAll();
     return res.status(200).json(productos);
   } catch (error) {
