@@ -24,4 +24,10 @@ module.exports = new Schema({
     type: String, 
     default: '' 
 },
-}, { timestamps: true });
+}, { timestamps: true, 
+  versionKey: false,    
+  toJSON: { virtuals: true },      
+  toObject: { virtuals: true }
+});
+
+module.exports = ProductSchema;
