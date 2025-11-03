@@ -2,10 +2,10 @@
 import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
-import HeroBanner from './components/HeroBanner';
-import ProductList from './components/ProductList';
+import HeroBanner from './pages/HeroBanner';
+import ProductList from './pages/ProductList';
 import Footer from './components/Footer';
-import ContactForm from './components/ContactForm';
+import ContactForm from './pages/ContactForm';
 import ProductDetail from './components/ProductDetail';
 import Cart from './components/Cart'; 
 import './App.css';
