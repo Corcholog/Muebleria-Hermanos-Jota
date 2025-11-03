@@ -13,10 +13,9 @@ import './App.css';
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [currentView, setCurrentView] = useState('home'); // 'home' | 'products' | 'contact' | 'detail' | 'cart'
+  const [currentView, setCurrentView] = useState('home'); 
   const [selectedProduct, setSelectedProduct] = useState(null);
 
-  // Carrito: líneas con cantidad
   const [cart, setCart] = useState([]);
 
   const toggleSidebar = () => setIsSidebarOpen((o) => !o);
@@ -31,7 +30,7 @@ function App() {
     setCurrentView('detail');
   };
 
-  // ---- Helpers de carrito (respetando tu estilo) ----
+
   const handleAddToCart = (productToAdd) => {
     setCart((prev) => {
       const existe = prev.find((it) => it.id === productToAdd.id);
