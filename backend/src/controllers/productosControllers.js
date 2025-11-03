@@ -1,4 +1,4 @@
-// /backend/controllers/productosControllers.js
+// /backend/src/controllers/productosControllers.js
 const mongoose = require('mongoose');
 const repo = require('../persistencia/repositories/product.repository');
 
@@ -8,10 +8,10 @@ const isValidId = (id) => mongoose.Types.ObjectId.isValid(id);
 async function getAll(req, res, next) {
   try {
     const productos = await repo.findAll();
-    res.status(200).json(productos);
+    return res.status(200).json(productos);
   } catch (error) {
     console.error('Error al obtener los productos:', error);
-    next(error);
+    return next(error);
   }
 }
 
@@ -22,35 +22,44 @@ async function getById(req, res, next) {
     if (!isValidId(id)) {
       return res.status(400).json({ message: "El parámetro 'id' debe ser un ObjectId válido." });
     }
-
     const producto = await repo.findById(id);
     if (!producto) {
       return res.status(404).json({ message: 'El producto no existe, vuelve a intentarlo.' });
     }
-
-    res.status(200).json(producto);
+    return res.status(200).json(producto);
   } catch (error) {
     console.error('Error al obtener producto:', error);
-    next(error);
+    return next(error);
   }
 }
 
 // POST /api/productos -> crear
 async function create(req, res, next) {
   try {
-    // Compat: si viene "imagen" desde front viejo, mapear a imagenUrl
     const payload = { ...req.body };
+
+    // Compat: imagen -> imagenUrl
     if (payload.imagen && !payload.imagenUrl) {
       payload.imagenUrl = payload.imagen;
       delete payload.imagen;
     }
 
-    // Validaciones mínimas (schema también valida)
+    // Coerción numérica segura (por si vienen strings)
+    if (payload.precio !== undefined) payload.precio = Number(payload.precio);
+    if (payload.stock !== undefined && payload.stock !== '') payload.stock = Number(payload.stock);
+
+    // Validaciones mínimas (el schema también valida)
     if (!payload.nombre || typeof payload.nombre !== 'string') {
       return res.status(400).json({ message: "El campo 'nombre' es requerido y debe ser un texto." });
     }
-    if (payload.precio === undefined || typeof payload.precio !== 'number' || Number.isNaN(payload.precio)) {
+    if (payload.precio === undefined || Number.isNaN(payload.precio)) {
       return res.status(400).json({ message: "El campo 'precio' es requerido y debe ser un número." });
+    }
+    if (payload.precio < 0) {
+      return res.status(400).json({ message: "El campo 'precio' no puede ser negativo." });
+    }
+    if (payload.stock !== undefined && (Number.isNaN(payload.stock) || payload.stock < 0)) {
+      return res.status(400).json({ message: "El campo 'stock' debe ser un número mayor o igual a 0." });
     }
 
     const doc = {
@@ -62,10 +71,10 @@ async function create(req, res, next) {
     };
 
     const creado = await repo.create(doc);
-    res.status(201).json(creado);
+    return res.status(201).json(creado);
   } catch (error) {
     console.error('Error al crear producto:', error);
-    next(error);
+    return next(error);
   }
 }
 
@@ -85,12 +94,26 @@ async function update(req, res, next) {
       delete payload.imagen;
     }
 
+    // Coerción numérica
+    if (payload.precio !== undefined) payload.precio = Number(payload.precio);
+    if (payload.stock !== undefined && payload.stock !== '') payload.stock = Number(payload.stock);
+
     // Limitar a campos del modelo
     const updates = {};
     if (payload.nombre !== undefined) updates.nombre = payload.nombre;
     if (payload.descripcion !== undefined) updates.descripcion = payload.descripcion;
-    if (payload.precio !== undefined) updates.precio = payload.precio;
-    if (payload.stock !== undefined) updates.stock = payload.stock;
+    if (payload.precio !== undefined) {
+      if (Number.isNaN(payload.precio) || payload.precio < 0) {
+        return res.status(400).json({ message: "El campo 'precio' debe ser un número >= 0." });
+      }
+      updates.precio = payload.precio;
+    }
+    if (payload.stock !== undefined) {
+      if (Number.isNaN(payload.stock) || payload.stock < 0) {
+        return res.status(400).json({ message: "El campo 'stock' debe ser un número >= 0." });
+      }
+      updates.stock = payload.stock;
+    }
     if (payload.imagenUrl !== undefined) updates.imagenUrl = payload.imagenUrl;
 
     const actualizado = await repo.update(id, updates);
@@ -98,10 +121,10 @@ async function update(req, res, next) {
       return res.status(404).json({ message: 'El producto no existe, vuelve a intentarlo.' });
     }
 
-    res.status(200).json(actualizado);
+    return res.status(200).json(actualizado);
   } catch (error) {
     console.error('Error al actualizar producto:', error);
-    next(error);
+    return next(error);
   }
 }
 
@@ -118,12 +141,11 @@ async function remove(req, res, next) {
       return res.status(404).json({ message: 'El producto no existe, vuelve a intentarlo.' });
     }
 
-    res.status(200).json({ message: 'Producto eliminado correctamente.' });
+    return res.status(200).json({ message: 'Producto eliminado correctamente.' });
   } catch (error) {
     console.error('Error al eliminar producto:', error);
-    next(error);
+    return next(error);
   }
 }
 
 module.exports = { getAll, getById, create, update, remove };
-
