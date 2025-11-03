@@ -49,4 +49,3 @@ connect()
     console.error('No se pudo conectar a MongoDB:', err);
     process.exit(1);
   });
-
