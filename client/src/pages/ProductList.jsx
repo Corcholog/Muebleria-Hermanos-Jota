@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ProductCard from './ProductCard';
+import ProductCard from '../components/ProductCard';
 import '../ProductStyles.css';
 
 const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:5000';

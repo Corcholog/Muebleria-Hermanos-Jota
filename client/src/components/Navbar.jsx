@@ -1,12 +1,12 @@
-// client/src/components/Navbar.jsx
 import React from 'react';
+import { Link } from 'react-router-dom'
 
-function Navbar({ toggleSidebar, navigateTo, cartItemCount, onCartClick }) {
-  const go = (view) => navigateTo && navigateTo(view);
+function Navbar({ toggleSidebar, cartItemCount }) {
 
   return (
     <header className="header">
       <div className="header__container">
+        {/* Menú lateral */}
         <div
           className="menu__container"
           onClick={toggleSidebar}
@@ -20,26 +20,31 @@ function Navbar({ toggleSidebar, navigateTo, cartItemCount, onCartClick }) {
           </div>
         </div>
 
+        {/* Navegación principal */}
         <nav className="nav__bar" aria-label="Navegación principal">
           <div className="logo__container">
-            <a onClick={() => go('home')} style={{ cursor: 'pointer' }}>
+            <Link to="/" className="logo__link">
               <img src="/imagenes/logo.svg" alt="Logo" className="logo-item" />
               <h1 className="nombre">Hermanos Jota</h1>
-            </a>
+            </Link>
           </div>
 
           <div className="nav__container">
             <ul className="nav__links">
               <li className="nav__items">
-                <a onClick={() => go('products')} style={{ cursor: 'pointer' }}>Productos</a>
+                <Link to="/">Inicio</Link>
               </li>
               <li className="nav__items">
-                <a onClick={() => go('contact')} style={{ cursor: 'pointer' }}>Contacto</a>
+                <Link to="/products">Productos</Link>
+              </li>
+              <li className="nav__items">
+                <Link to="/contact">Contacto</Link>
               </li>
             </ul>
           </div>
         </nav>
 
+        {/* Iconos cuenta + carrito */}
         <div className="funcionalidades__container">
           <div className="account-widget">
             <a href="#" onClick={(e) => e.preventDefault()} aria-label="Cuenta">
@@ -47,15 +52,10 @@ function Navbar({ toggleSidebar, navigateTo, cartItemCount, onCartClick }) {
             </a>
           </div>
           <div className="cart-widget">
-            <a
-              href="#"
-              id="cart-btn"
-              onClick={(e) => { e.preventDefault(); onCartClick?.(); }}
-              aria-label="Carrito"
-            >
+            <Link to="/cart" aria-label="Carrito">
               <img src="/imagenes/shopping-cart-svgrepo-com.svg" alt="Carrito" />
               <span id="cart-count" aria-live="polite">{cartItemCount}</span>
-            </a>
+            </Link>
           </div>
         </div>
       </div>
