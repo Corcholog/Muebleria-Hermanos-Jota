@@ -1,5 +1,5 @@
-// client/src/App.jsx
 import React, { useState } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom'
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import HeroBanner from './pages/HeroBanner';
@@ -13,23 +13,13 @@ import './App.css';
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [currentView, setCurrentView] = useState('home'); 
-  const [selectedProduct, setSelectedProduct] = useState(null);
-
   const [cart, setCart] = useState([]);
 
   const toggleSidebar = () => setIsSidebarOpen((o) => !o);
-
-  const navigateTo = (view) => {
-    setCurrentView(view);
+  const navigateTo = (path) => {
     setIsSidebarOpen(false);
+    Navigate(path);
   };
-
-  const goToDetail = (producto) => {
-    setSelectedProduct(producto);
-    setCurrentView('detail');
-  };
-
 
   const handleAddToCart = (productToAdd) => {
     setCart((prev) => {
@@ -80,45 +70,19 @@ function App() {
       <Sidebar isOpen={isSidebarOpen} navigateTo={navigateTo} />
 
       <main>
-        {currentView === 'home' && (
-          <>
-            <HeroBanner navigateTo={navigateTo} />
-            <ProductList
-              setSelectedProduct={goToDetail}
-              handleAddToCart={handleAddToCart}
-              limit={5}
-            />
-          </>
-        )}
-
-        {currentView === 'products' && (
-          <ProductList
-            setSelectedProduct={goToDetail}
-            handleAddToCart={handleAddToCart}
-            limit={null}
-          />
-        )}
-
-        {currentView === 'contact' && <ContactForm />}
-
-        {currentView === 'detail' && (
-          <ProductDetail
-            producto={selectedProduct}
-            volver={() => setCurrentView('home')}
-            onAddToCart={handleAddToCart}
-          />
-        )}
-
-        {currentView === 'cart' && (
-          <Cart
-            items={cart}
-            onIncrement={incrementQty}
-            onDecrement={decrementQty}
-            onRemove={removeFromCart}
-            onClear={clearCart}
-            volver={() => setCurrentView('products')}
-          />
-        )}
+        <Routes>
+          <Route path="/" element={
+            <>
+              <HeroBanner navigateTo={navigateTo} />
+              <ProductList handleAddToCart={handleAddToCart} limit={5}/>
+            </>
+          }/>
+          
+          <Route path="/products" element={<ProductList handleAddToCart={handleAddToCart} limit={null}/>}/>
+          <Route path="/products/:id" element={<ProductDetail onAddToCart={handleAddToCart} />}/>
+          <Route path="/contact" element={<ContactForm />}/>
+          <Route path="/cart" element={<Cart items={cart} onIncrement={incrementQty} onDecrement={decrementQty} onRemove={removeFromCart} onClear={clearCart} volver={() => navigateTo('/productos')}/>}/>
+        </Routes>
       </main>
 
       <Footer />
