@@ -1,10 +1,10 @@
 const Product = require('../models/product.model');
 
-function findAll() { 
-    return Product.find().sort({ createdAt: -1 }); 
+function findAll({ limit = 0, skip = 0 } = {}) {
+  return Product.find().sort({ createdAt: -1 }).skip(skip).limit(limit).lean();
 }
-function findById(id) { 
-    return Product.findById(id); 
+function findById(id) {
+  return Product.findById(id).lean();
 }
 function create(data) { 
     return Product.create(data); 
