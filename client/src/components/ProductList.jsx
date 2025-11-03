@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import ProductCard from './ProductCard';
 import '../ProductStyles.css';
 
@@ -19,10 +19,7 @@ function ProductList({ setSelectedProduct, limit, handleAddToCart }) {
         setError(null);
 
         const res = await fetch(API, { signal: ctrl.signal });
-
-        if (!res.ok) {
-          throw new Error(`Error al cargar los productos (HTTP ${res.status})`);
-        }
+        if (!res.ok) throw new Error(`Error al cargar los productos (HTTP ${res.status})`);
 
         const data = await res.json();
         setProductos(Array.isArray(data) ? data : []);
@@ -40,7 +37,6 @@ function ProductList({ setSelectedProduct, limit, handleAddToCart }) {
   }, []);
 
   const productosAmostrar = typeof limit === 'number' && limit > 0 ? productos.slice(0, limit) : productos;
-
   const isHighlighted = typeof limit === 'number' && limit > 0;
   const cardButtonText = isHighlighted ? 'Ver Detalles' : 'Añadir al carrito';
   const cardButtonAction = isHighlighted ? setSelectedProduct : handleAddToCart;
@@ -53,11 +49,9 @@ function ProductList({ setSelectedProduct, limit, handleAddToCart }) {
       {isHighlighted ? (
         <div className="destacados__container">
           <h2 className="destacados__title section-title">{titleText}</h2>
-
           <div id={gridId} className="destacados__grid">
             {loading && <p>Cargando...</p>}
             {error && <p role="alert">{error}</p>}
-
             {!loading && !error && productosAmostrar.map((producto) => (
               <ProductCard
                 key={producto.id}
@@ -75,7 +69,6 @@ function ProductList({ setSelectedProduct, limit, handleAddToCart }) {
           <section id={gridId}>
             {loading && <p>Cargando...</p>}
             {error && <p role="alert">{error}</p>}
-
             {!loading && !error && productosAmostrar.map((producto) => (
               <ProductCard
                 key={producto.id}

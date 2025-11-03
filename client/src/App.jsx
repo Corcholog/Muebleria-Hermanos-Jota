@@ -7,8 +7,9 @@ import ProductList from './components/ProductList';
 import Footer from './components/Footer';
 import ContactForm from './components/ContactForm';
 import ProductDetail from './components/ProductDetail';
-import Cart from './components/Cart'; // <-- NUEVO
+import Cart from './components/Cart'; 
 import './App.css';
+
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
