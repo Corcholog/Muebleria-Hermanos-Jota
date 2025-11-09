@@ -1,4 +1,3 @@
-// client/src/components/Cart.jsx
 import React from 'react';
 
 function Cart({ items, onIncrement, onDecrement, onRemove, onClear, volver }) {

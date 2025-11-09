@@ -1,6 +1,6 @@
 const { Schema } = require('mongoose');
 
-module.exports = new Schema({
+const ProductSchema = new Schema({
   nombre: { 
     type: String, 
     required: true, 
