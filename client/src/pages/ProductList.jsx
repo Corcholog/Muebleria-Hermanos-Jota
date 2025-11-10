@@ -1,40 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import ProductCard from '../components/ProductCard';
 import '../ProductStyles.css';
-
-const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:5000';
-const API = `${API_BASE}/api/productos`;
+import { useProducts } from '../hooks/useProducts';
 
 function ProductList({ limit, handleAddToCart }) {
-  const [productos, setProductos] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const ctrl = new AbortController();
-
-    const fetchProducts = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-
-        const res = await fetch(API, { signal: ctrl.signal });
-        if (!res.ok) throw new Error(`Error al cargar los productos (HTTP ${res.status})`);
-
-        const data = await res.json();
-        setProductos(Array.isArray(data) ? data : []);
-      } catch (err) {
-        if (err.name !== 'AbortError') {
-          setError(err.message || 'Error al cargar los productos');
-        }
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProducts();
-    return () => ctrl.abort();
-  }, []);
+  // Hook personalizado maneja toda la lógica de fetch
+  const { productos, loading, error } = useProducts();
 
   const productosAmostrar = typeof limit === 'number' && limit > 0 ? productos.slice(0, limit) : productos;
   const isHighlighted = typeof limit === 'number' && limit > 0;
