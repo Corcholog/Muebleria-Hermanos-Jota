@@ -1,49 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import '../ProductStyles.css';
 import { useNavigate, useParams } from "react-router-dom";
-
-const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:5000';
-
+import { useProduct } from '../hooks/useProducts';
+import { useFormattedPrice } from '../hooks/useProductUtils';
 
 function ProductDetail({ onAddToCart }) {
 
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const [producto, setProducto] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const ctrl = new AbortController();
-
-    const fetchProducto = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-
-        const res = await fetch(`${API_BASE}/api/productos/${id}`, { 
-          signal: ctrl.signal 
-        });
-        
-        if (!res.ok) {
-          throw new Error(`Error al cargar el producto (HTTP ${res.status})`);
-        }
-
-        const data = await res.json();
-        setProducto(data);
-      } catch (err) {
-        if (err.name !== 'AbortError') {
-          setError(err.message || 'Error al cargar el producto');
-        }
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProducto();
-    return () => ctrl.abort();
-  }, [id]);
+  // Hook personalizado maneja toda la lógica de fetch
+  const { producto, loading, error } = useProduct(id);
+ 
+  // Hook para formatear precio 
+  const precioFormateado = useFormattedPrice(producto?.precio);
 
   const volver = () => {
     navigate('/products'); 
@@ -77,8 +47,6 @@ function ProductDetail({ onAddToCart }) {
     );
   }
 
-  const precio = Number(producto.precio);
-
   return (
     <main className="producto-detalle">
       <h1 id="product-title" className="section-title">{producto.nombre}</h1>
@@ -87,13 +55,10 @@ function ProductDetail({ onAddToCart }) {
         ← Volver al catálogo
       </button>
 
-
       <article id="product-details" className="detalle-container">
         <figure id="product-img">
           <img src={producto.imagen} alt={producto.nombre} />
-          <p className="precio">
-            ${isNaN(precio) ? producto.precio : precio.toLocaleString('es-AR')}
-          </p>
+          <p className="precio">${precioFormateado}</p>
         </figure>
 
         <section id="product-info">

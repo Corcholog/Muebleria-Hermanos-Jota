@@ -1,9 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useFormattedPrice } from '../hooks/useProductUtils';
 
 function ProductCard({ producto, buttonText, buttonAction, useNavigation = false }) {
   const navigate = useNavigate();
-  const precio = Number(producto.precio);
+ 
+  // Hook para formatear precio 
+  const precioFormateado = useFormattedPrice(producto.precio);
 
    const handleCardClick = () => {
     if (useNavigation) {
@@ -26,9 +29,7 @@ function ProductCard({ producto, buttonText, buttonAction, useNavigation = false
       onKeyDown={(e) => e.key === 'Enter' && handleCardClick()}>
       <h2>{producto.nombre}</h2>
       <img src={producto.imagen} alt={producto.nombre} loading="lazy" />
-      <p className="precio">
-        ${isNaN(precio) ? producto.precio : precio.toLocaleString('es-AR')}
-      </p>
+      <p className="precio">${precioFormateado}</p>
 
       <button
         type="button"
