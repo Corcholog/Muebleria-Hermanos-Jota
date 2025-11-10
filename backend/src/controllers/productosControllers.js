@@ -1,16 +1,25 @@
-// /backend/src/controllers/productosControllers.js
 const mongoose = require('mongoose');
 const repo = require('../persistencia/repositories/product.repository');
 
 const isValidId = (id) => mongoose.Types.ObjectId.isValid(id);
 
+// Helper para transformar _id a id
+const transformProduct = (producto) => {
+  if (!producto) return null;
+  const obj = producto.toObject ? producto.toObject() : producto;
+  return {
+    ...obj,
+    id: obj._id.toString(),
+    _id: undefined
+  };
+};
+
 // GET /api/productos -> todos
 async function getAll(req, res, next) {
   try {
-    const limit = Math.max(0, Number(req.query.limit) || 0); 
-    const skip  = Math.max(0, Number(req.query.skip)  || 0); 
     const productos = await repo.findAll();
-    return res.status(200).json(productos);
+    const productosTransformados = productos.map(transformProduct);
+    return res.status(200).json(productosTransformados);
   } catch (error) {
     console.error('Error al obtener los productos:', error);
     return next(error);
@@ -28,7 +37,7 @@ async function getById(req, res, next) {
     if (!producto) {
       return res.status(404).json({ message: 'El producto no existe, vuelve a intentarlo.' });
     }
-    return res.status(200).json(producto);
+    return res.status(200).json(transformProduct(producto));
   } catch (error) {
     console.error('Error al obtener producto:', error);
     return next(error);
@@ -50,7 +59,7 @@ async function create(req, res, next) {
     if (payload.precio !== undefined) payload.precio = Number(payload.precio);
     if (payload.stock !== undefined && payload.stock !== '') payload.stock = Number(payload.stock);
 
-    // Validaciones mínimas (el schema también valida)
+    // Validaciones mínimas 
     if (!payload.nombre || typeof payload.nombre !== 'string') {
       return res.status(400).json({ message: "El campo 'nombre' es requerido y debe ser un texto." });
     }
@@ -73,7 +82,7 @@ async function create(req, res, next) {
     };
 
     const creado = await repo.create(doc);
-    return res.status(201).json(creado);
+    return res.status(201).json(transformProduct(creado));
   } catch (error) {
     console.error('Error al crear producto:', error);
     return next(error);
@@ -123,7 +132,7 @@ async function update(req, res, next) {
       return res.status(404).json({ message: 'El producto no existe, vuelve a intentarlo.' });
     }
 
-    return res.status(200).json(actualizado);
+    return res.status(200).json(transformProduct(actualizado));
   } catch (error) {
     console.error('Error al actualizar producto:', error);
     return next(error);

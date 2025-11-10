@@ -5,7 +5,7 @@ import '../ProductStyles.css';
 const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 const API = `${API_BASE}/api/productos`;
 
-function ProductList({ setSelectedProduct, limit, handleAddToCart }) {
+function ProductList({ limit, handleAddToCart }) {
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -39,7 +39,7 @@ function ProductList({ setSelectedProduct, limit, handleAddToCart }) {
   const productosAmostrar = typeof limit === 'number' && limit > 0 ? productos.slice(0, limit) : productos;
   const isHighlighted = typeof limit === 'number' && limit > 0;
   const cardButtonText = isHighlighted ? 'Ver Detalles' : 'Añadir al carrito';
-  const cardButtonAction = isHighlighted ? setSelectedProduct : handleAddToCart;
+  const useNavigation = true;
   const gridId = isHighlighted ? 'productos-destacados-grid' : 'card-container';
   const sectionClass = isHighlighted ? 'destacados' : 'catalogo';
   const titleText = isHighlighted ? 'Nuestros Destacados' : 'Catálogo de nuestros productos';
@@ -56,9 +56,9 @@ function ProductList({ setSelectedProduct, limit, handleAddToCart }) {
               <ProductCard
                 key={producto.id}
                 producto={producto}
-                onSelect={() => setSelectedProduct(producto)}
                 buttonText={cardButtonText}
-                buttonAction={cardButtonAction}
+                buttonAction={handleAddToCart}
+                useNavigation={useNavigation}
               />
             ))}
           </div>
@@ -73,9 +73,9 @@ function ProductList({ setSelectedProduct, limit, handleAddToCart }) {
               <ProductCard
                 key={producto.id}
                 producto={producto}
-                onSelect={() => setSelectedProduct(producto)}
                 buttonText={cardButtonText}
-                buttonAction={cardButtonAction}
+                buttonAction={handleAddToCart}
+                useNavigation={useNavigation}
               />
             ))}
           </section>
