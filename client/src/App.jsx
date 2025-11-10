@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import HeroBanner from './pages/HeroBanner';
 import ProductList from './pages/ProductList';
 import Footer from './components/Footer';
 import ContactForm from './pages/ContactForm';
-import ProductDetail from './components/ProductDetail';
+import ProductDetail from './pages/ProductDetail';
 import Cart from './components/Cart'; 
 import './App.css';
 
@@ -14,11 +14,13 @@ import './App.css';
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [cart, setCart] = useState([]);
+  const navigate = useNavigate();
 
   const toggleSidebar = () => setIsSidebarOpen((o) => !o);
+  
   const navigateTo = (path) => {
     setIsSidebarOpen(false);
-    Navigate(path);
+    navigate(path);
   };
 
   const handleAddToCart = (productToAdd) => {
@@ -64,24 +66,25 @@ function App() {
         toggleSidebar={toggleSidebar}
         navigateTo={navigateTo}
         cartItemCount={cartCount}
-        onCartClick={() => navigateTo('cart')} // <-- para ir a la vista carrito
+        onCartClick={() => navigateTo('cart')}
       />
 
       <Sidebar isOpen={isSidebarOpen} navigateTo={navigateTo} />
 
       <main>
         <Routes>
+          {/* Página principal con destacados */}
           <Route path="/" element={
             <>
               <HeroBanner navigateTo={navigateTo} />
-              <ProductList handleAddToCart={handleAddToCart} limit={5}/>
+              <ProductList handleAddToCart={handleAddToCart} limit={4}/>
             </>
           }/>
           
-          <Route path="/products" element={<ProductList handleAddToCart={handleAddToCart} limit={null}/>}/>
+          <Route path="/products" element={<ProductList handleAddToCart={handleAddToCart} />}/>
           <Route path="/products/:id" element={<ProductDetail onAddToCart={handleAddToCart} />}/>
           <Route path="/contact" element={<ContactForm />}/>
-          <Route path="/cart" element={<Cart items={cart} onIncrement={incrementQty} onDecrement={decrementQty} onRemove={removeFromCart} onClear={clearCart} volver={() => navigateTo('/productos')}/>}/>
+          <Route path="/cart" element={<Cart items={cart} onIncrement={incrementQty} onDecrement={decrementQty} onRemove={removeFromCart} onClear={clearCart} volver={() => navigateTo('/products')}/>}/>
         </Routes>
       </main>
 
