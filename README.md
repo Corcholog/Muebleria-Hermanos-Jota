@@ -1,26 +1,35 @@
 # Muebleria-Hermanos-Jota
 
-Este proyecto es el desarrollo de un sitio web de **e-commerce** para una mueblería artesanal, como parte del trabajo práctico final de los **Sprints 3 y 4 - NEXUS**.
+Este proyecto es el desarrollo de un sitio web de **e-commerce** para una mueblería artesanal, como parte del trabajo práctico final de los **Sprints 5 y 6 - NEXUS**.
 La aplicación está construida con una arquitectura **cliente-servidor**:
-- **Backend:** Node.js + Express (API REST)  
-- **Frontend:** React (SPA) 
+- **Backend:** Node.js + Express (API REST) + MongoDB
+- **Frontend:** React (SPA)
+
+---
+
+## 🚀 Sitios Desplegados
+
+Puedes acceder a las versiones desplegadas del proyecto en los siguientes enlaces:
+
+* **Frontend (Cliente):** [https://muebleria-hermanos-jota.vercel.app/](https://muebleria-hermanos-jota.vercel.app/)
+* **Backend (Servidor):** [https://muebleria-hermanos-jota-e3y4.onrender.com](https://muebleria-hermanos-jota-e3y4.onrender.com)
 
 ---
 
 ## Integrantes
-- Mongelós Ramiro 
-- Castagnino Lucia 
-- Loguercio Giorgio Ivan 
+- Mongelós Ramiro
+- Castagnino Lucia
+- Loguercio Giorgio Ivan
 - Leiva Falcón Matías
 - Orue Ramiro Agustin
 
 ---
 
-### Herramentias usadas:
-- **Frontend:** React, JavaScript, CSS  
-- **Backend:** Node.js, Express  
-- **Gestión de dependencias:** npm  
-- **Control de versiones:** Git + GitHub  
+### Herramientas usadas:
+- **Frontend:** React, JavaScript, CSS
+- **Backend:** Node.js, Express, MongoDB
+- **Gestión de dependencias:** npm
+- **Control de versiones:** Git + GitHub
 
 ---
 
@@ -35,68 +44,52 @@ Sitio web e-commerce que carga productos dinámicamente desde el backend mediant
 
 ---
 
-### Instalación y ejecución
+## ⚙️ Instalación y Ejecución Local
 
-#### 1. Clonar el repositorio
+Sigue estos pasos para correr el proyecto en tu máquina.
 
-a. Entrar al repositorio en GitHub.  
-b. Hacer clic en el botón verde **Code** y copiar la URL (HTTPS recomendado).  
-c. Abrir la terminal en la carpeta donde quieras clonar el proyecto.  
-d. Ejecutar el comando:  
+### 1. Clonar el repositorio
 
 ```bash
-git clone <URL_DEL_REPO>
+git clone [https://github.com/Corcholog/Muebleria-Hermanos-Jota.git](https://github.com/Corcholog/Muebleria-Hermanos-Jota.git)
+cd Muebleria-Hermanos-Jota
 ```
 
-Ejemplo: `git clone https://github.com/usuario/Muebleria-Hermanos-Jota.git`
+### 2. Configurar Variables de Entorno (¡Importante!)
+El proyecto necesita archivos .env para funcionar. Estos archivos no se suben al repositorio y deben ser creados localmente, aun así dejamos un .env.example.
 
-e. Entrar a la carpeta recién clonada:
+Backend:
 
-`cd Muebleria-Hermanos-Jota`
+Navega a la carpeta /backend.
 
-#### 2. Instalación de dependencias
+Crea un archivo llamado .env.
 
+Pega el siguiente contenido. 
+
+PORT=3001
+MONGODB_URI=mongodb+srv://USUARIO:PASSWORD@tu_cluster.mongodb.net/nombre_db
+
+Frontend:
+
+Navega a la carpeta /client.
+
+Crea un archivo llamado .env.
+
+Pega el siguiente contenido. Esto le dice a React dónde encontrar tu backend local.
+
+REACT_APP_API_URL=http://localhost:3001
+
+### 3. Instalación de Dependencias
 Instala las dependencias tanto para el Backend como para el Frontend.
 
-**Backend**
-
-Ejecuta los siguientes comandos en la terminal, estando dentro de la carpeta principal del proyecto (Muebleria-Hermanos-Jota):
+Backend (desde la raíz del proyecto):
 ```bash
-- cd backend
-- npm install
-```
-**Frontend**
-
-Una vez finalizada la instalación del backend, instala las dependencias del cliente:
-```bash
-- cd ../client
-- npm install
+cd backend
+npm install
 ```
 
-#### 3. Ejecucion del proyecto
-
-**Levantar el servidor Backend**
-
-Abre una terminal, navega a la carpeta backend y ejecuta:
+Frontend (desde la raíz del proyecto):
 ```bash
- cd backend
- node server.js
+cd client
+npm install
 ```
-El backend corre por defecto en: `http://localhost:5000`
-
-**Levantar el cliente Frontend**
-
-Abre una segunda terminal, navega a la carpeta client y ejecuta:
-```bash
- cd client
- npm start
-```
-El frontend corre en: `http://localhost:3000`
-
----
-
-### Notas
-
-- Es necesario tener instalado **Node.js** y **npm**.
-- El frontend depende del backend, por lo que ambos deben estar corriendo al **mismo tiempo**.
-
