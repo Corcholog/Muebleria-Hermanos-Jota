@@ -8,8 +8,17 @@ const logger = require('./src/middlewares/logger');
 
 const app = express();
 
-// Middlewares
-app.use(cors());
+// CORS
+const corsOptions = {
+  origin: [
+    'http://localhost:3000',
+    'https://tu-frontend.vercel.app' 
+  ],
+  credentials: true,
+  optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(logger);
 
