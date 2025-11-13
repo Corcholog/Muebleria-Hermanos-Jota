@@ -11,7 +11,7 @@ La aplicación está construida con una arquitectura **cliente-servidor**:
 
 Puedes acceder a las versiones desplegadas del proyecto en los siguientes enlaces:
 
-* **Frontend (Cliente):** [https://muebleria-hermanos-jota.vercel.app/](https://muebleria-hermanos-jota.vercel.app/)
+* **Frontend (Cliente):** [https://muebleria-hermanos-jota-sprint5-6.vercel.app/](https://muebleria-hermanos-jota-sprint5-6.vercel.app/)
 * **Backend (Servidor):** [https://muebleria-hermanos-jota-e3y4.onrender.com](https://muebleria-hermanos-jota-e3y4.onrender.com)
 
 ---
