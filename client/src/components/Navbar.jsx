@@ -1,7 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../context/AuthContext';
+import { useContext } from 'react';
 
 function Navbar({ toggleSidebar, cartItemCount }) {
+
+  const { isAuthenticated, logout } = useContext(AuthContext);
 
   return (
     <header className="header">
@@ -47,14 +51,21 @@ function Navbar({ toggleSidebar, cartItemCount }) {
         {/* Iconos cuenta + carrito */}
         <div className="funcionalidades__container">
           <div className="account-widget">
-            <a href="#" onClick={(e) => e.preventDefault()} aria-label="Cuenta">
-              <img src="/imagenes/user-svgrepo-com.svg" alt="Cuenta" />
-            </a>
+            {isAuthenticated ? (
+              <button onClick={logout}>
+                <img src="/imagenes/user-svgrepo-com.svg" alt="Cuenta" />
+                Logout
+              </button>
+            ) : (
+              <Link to="/login">
+                <img src="/imagenes/user-svgrepo-com.svg" alt="Cuenta" />
+              </Link>
+            )}
           </div>
           <div className="cart-widget">
             <Link to="/cart" aria-label="Carrito">
               <img src="/imagenes/shopping-cart-svgrepo-com.svg" alt="Carrito" />
-              <span id="cart-count" aria-live="polite">{cartItemCount}</span>
+              <span id="cart-count">{cartItemCount}</span>
             </Link>
           </div>
         </div>
