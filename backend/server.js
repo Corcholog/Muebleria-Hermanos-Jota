@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 
 const { connect } = require('./src/persistencia/mongo');
+const authRouter = require('./src/routes/authRoutes');
 const productosRouter = require('./src/routes/productosRoutes');
 const logger = require('./src/middlewares/logger');
 
@@ -28,6 +29,7 @@ app.get('/api/health', (req, res) => {
 });
 
 // Rutas principales
+app.use('/api/auth', authRouter);
 app.use('/api/productos', productosRouter);
 
 // Error 404 (ruta no encontrada)
