@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
+const auth = require('../src/middlewares/a')
+
 // Controladores (adaptados a Mongo/Mongoose)
 const controladores = require('../controllers/productosControllers');
 
@@ -11,9 +13,11 @@ router.use((req, res, next) => {
   next();
 });
 
-// Rutas principales (CRUD)
+// Rutas públicas (sin auth)
 router.get('/', controladores.getAll);
 router.get('/:id', controladores.getById);
+
+// Rutas protegidas (con auth) - requieren token JWT
 router.post('/', controladores.create);
 router.put('/:id', controladores.update);
 router.delete('/:id', controladores.remove);
