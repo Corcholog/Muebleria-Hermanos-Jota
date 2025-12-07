@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const userRepository = require('../persistencia/repositories/user.repository')
-const User = require('../models/user.model');
+const User = require('../persistencia/models/user.model');
 
 exports.register = async (req, res) => {
   try {

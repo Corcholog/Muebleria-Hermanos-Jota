@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const auth = require('../src/middlewares/a')
+const auth = require('../middlewares/auth');
 
 // Controladores (adaptados a Mongo/Mongoose)
 const controladores = require('../controllers/productosControllers');
