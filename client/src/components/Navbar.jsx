@@ -57,9 +57,10 @@ function Navbar({ toggleSidebar, cartItemCount }) {
                 Logout
               </button>
             ) : (
-              <Link to="/login">
-                <img src="/imagenes/user-svgrepo-com.svg" alt="Cuenta" />
-              </Link>
+              <div className="auth-buttons">
+                <Link to="/login" className="nav-auth-btn">Login</Link>
+                <Link to="/register" className="nav-auth-btn">Register</Link>
+              </div>
             )}
           </div>
           <div className="cart-widget">
