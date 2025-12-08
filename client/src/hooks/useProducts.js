@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const API_BASE = "";
+const API_BASE = process.env.REACT_APP_API_URL || "";
 
 /**
  * Custom hook para manejar el fetch de productos
@@ -19,10 +19,10 @@ export const useProducts = () => {
         setLoading(true);
         setError(null);
 
-        const res = await fetch(`${API_BASE}/api/productos`, { 
-          signal: ctrl.signal 
+        const res = await fetch(`${API_BASE}/api/productos`, {
+          signal: ctrl.signal
         });
-        
+
         if (!res.ok) {
           throw new Error(`Error al cargar los productos (HTTP ${res.status})`);
         }
@@ -64,10 +64,10 @@ export const useProduct = (id) => {
         setLoading(true);
         setError(null);
 
-        const res = await fetch(`${API_BASE}/api/productos/${id}`, { 
-          signal: ctrl.signal 
+        const res = await fetch(`${API_BASE}/api/productos/${id}`, {
+          signal: ctrl.signal
         });
-        
+
         if (!res.ok) {
           throw new Error(`Error al cargar el producto (HTTP ${res.status})`);
         }

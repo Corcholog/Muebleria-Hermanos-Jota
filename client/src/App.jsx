@@ -69,16 +69,7 @@ function App() {
 
           <Route
             path="/cart"
-            element={
-              <Cart
-                items={cart}
-                onIncrement={(id) => updateQuantity(id, +1)}
-                onDecrement={(id) => updateQuantity(id, -1)}
-                onRemove={removeItem}
-                onClear={clearCart}
-                volver={() => navigateTo('/products')}
-              />
-            }
+            element={<Cart />}
           />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
