@@ -15,7 +15,7 @@ Este proyecto es el desarrollo de un sitio web de **e-commerce** para una mueble
 
 Puedes acceder a las versiones desplegadas del proyecto en los siguientes enlaces:
 
-* **Frontend (Cliente):** [https://muebleria-hermanos-jota-sprint5-6.vercel.app/](https://muebleria-hermanos-jota-sprint5-6.vercel.app/)
+* **Frontend (Cliente):** [https://muebleria-hermanos-jota-sprint7-8.vercel.app/](https://muebleria-hermanos-jota-sprint7-8.vercel.app)
 * **Backend (Servidor):** [https://muebleria-hermanos-jota-e3y4.onrender.com](https://muebleria-hermanos-jota-e3y4.onrender.com)
 
 ---
