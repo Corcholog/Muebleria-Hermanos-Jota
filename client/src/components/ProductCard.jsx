@@ -16,8 +16,9 @@ function ProductCard({ producto, buttonText, buttonAction, useNavigation = false
 
   const handleButtonClick = (e) => {
     e.stopPropagation();
-    
+
     if (useNavigation) {
+      console.log('➡️ Navigating to product detail');
       navigate(`/products/${producto.id}`);
     } else {
       buttonAction?.(producto);

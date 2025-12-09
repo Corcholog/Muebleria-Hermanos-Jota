@@ -10,7 +10,7 @@ function ProductList({ limit, handleAddToCart }) {
   const productosAmostrar = typeof limit === 'number' && limit > 0 ? productos.slice(0, limit) : productos;
   const isHighlighted = typeof limit === 'number' && limit > 0;
   const cardButtonText = isHighlighted ? 'Ver Detalles' : 'Añadir al carrito';
-  const useNavigation = true;
+  const useNavigation = isHighlighted;
   const gridId = isHighlighted ? 'productos-destacados-grid' : 'card-container';
   const sectionClass = isHighlighted ? 'destacados' : 'catalogo';
   const titleText = isHighlighted ? 'Nuestros Destacados' : 'Catálogo de nuestros productos';
