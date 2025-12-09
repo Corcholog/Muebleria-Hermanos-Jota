@@ -1077,3 +1077,84 @@ textarea.input {
     color: #e65100;
     font-weight: 600;
 }
+
+/* ============================================ */
+/* USER MENU STYLES (NAVBAR)                   */
+/* ============================================ */
+
+.user-menu {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+.user-menu img {
+    width: 2.2rem;
+    height: 2.2rem;
+}
+
+.user-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-principal);
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.logout-btn {
+    background-color: var(--color-principal);
+    color: var(--color-fondo);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.logout-btn:hover {
+    background-color: var(--color-suave);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive adjustments for user menu */
+@media (max-width: 768px) {
+    .user-menu {
+        gap: 6px;
+        padding: 4px 8px;
+    }
+
+    .user-name {
+        display: none; /* Ocultar nombre en móviles */
+    }
+
+    .logout-btn {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
+
+    .user-menu img {
+        width: 1.8rem;
+        height: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .user-menu {
+        gap: 4px;
+        padding: 3px 6px;
+    }
+
+    .logout-btn {
+        padding: 5px 10px;
+        font-size: 0.8rem;
+    }
+}

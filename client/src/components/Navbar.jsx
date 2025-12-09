@@ -1,11 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom'
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
-import { useContext } from 'react';
 
 function Navbar({ toggleSidebar, cartItemCount }) {
-
-  const { isAuthenticated, logout } = useContext(AuthContext);
+  const { user, isAuthenticated, logout } = useContext(AuthContext);
 
   return (
     <header className="header">
@@ -52,10 +50,13 @@ function Navbar({ toggleSidebar, cartItemCount }) {
         <div className="funcionalidades__container">
           <div className="account-widget">
             {isAuthenticated ? (
-              <button onClick={logout}>
-                <img src="/imagenes/user-svgrepo-com.svg" alt="Cuenta" />
-                Logout
-              </button>
+              <div className="user-menu">
+                <img src="/imagenes/user-svgrepo-com.svg" alt="Usuario" />
+                <span className="user-name">{user?.nombre || user?.email || 'Usuario'}</span>
+                <button onClick={logout} className="logout-btn">
+                  Logout
+                </button>
+              </div>
             ) : (
               <div className="auth-buttons">
                 <Link to="/login" className="nav-auth-btn">Login</Link>
@@ -63,10 +64,11 @@ function Navbar({ toggleSidebar, cartItemCount }) {
               </div>
             )}
           </div>
+          
           <div className="cart-widget">
             <Link to="/cart" aria-label="Carrito">
               <img src="/imagenes/shopping-cart-svgrepo-com.svg" alt="Carrito" />
-              <span id="cart-count">{cartItemCount}</span>
+              {cartItemCount > 0 && <span id="cart-count">{cartItemCount}</span>}
             </Link>
           </div>
         </div>
@@ -76,4 +78,3 @@ function Navbar({ toggleSidebar, cartItemCount }) {
 }
 
 export default Navbar;
-
