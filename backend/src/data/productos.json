@@ -97,7 +97,7 @@
     },
     {
         "nombre": "Sillas Córdoba", 
-        "imagen": "/imagenes/Sillas_Córdoba.png", 
+        "imagen": "/imagenes/Sillas_Cordoba.png", 
         "precio": 103.699,
         "detalles": {
             "Medidas": "45 × 52 × 80 cm (cada una)",
@@ -109,7 +109,7 @@
     },
     {
         "nombre": "Sillón Copacabana", 
-        "imagen": "/imagenes/Sillón_Copacabana.png", 
+        "imagen": "/imagenes/Sillon_Copacabana.png", 
         "precio": 115.729,
         "detalles": {
             "Medidas": "90 × 85 × 95 cm",
@@ -121,7 +121,7 @@
     },
     {
         "nombre": "Sofá Patagonia", 
-        "imagen": "/imagenes/Sofá_Patagonia.png", 
+        "imagen": "/imagenes/Sofa_Patagonia.png", 
         "precio": 123.499,
         "detalles": {
             "Medidas": "220 × 90 × 80 cm",
