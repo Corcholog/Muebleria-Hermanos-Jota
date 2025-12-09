@@ -8,7 +8,7 @@ exports.register = async (req, res) => {
     const { nombre, email, password } = req.body;
 
     // Validacion
-    if (!nombre || !phone || !email || !password ) {
+    if (!nombre || !email || !password ) {
       return res.status(400).json({ error: 'Todos los campos son obligatorios' });
     }
 
@@ -24,17 +24,17 @@ exports.register = async (req, res) => {
     //Crear usuario
     const user = await userRepository.create({
       nombre,
-      phone,
       email,
       password: hashedPassword
     });
 
     res.status(201).json({
       message: 'Usuario registrado exitosamente',
-      user: { id: user._id, nombre: user.nombre, phone: user.phone, email: user.email }
+      user: { id: user._id, nombre: user.nombre, email: user.email }
     });
 
   } catch (error) {
+    console.error('Error en register:', error);
     res.status(500).json({ error: 'Error al registrar usuario' });
   }
 };
